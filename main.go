@@ -3,12 +3,39 @@ package main
 import (
 	"crypto/md5"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
+	"io/fs"
 	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
+	"time"
 )
+
+var noGameIdentified = errors.New("no game identified")
+
+type Game struct {
+	Text        string `xml:",chardata"`
+	Name        string `xml:"name,attr"`
+	Cloneof     string `xml:"cloneof,attr"`
+	Description string `xml:"description"`
+	Release     []struct {
+		Text   string `xml:",chardata"`
+		Name   string `xml:"name,attr"`
+		Region string `xml:"region,attr"`
+	} `xml:"release"`
+	Rom struct {
+		Text   string `xml:",chardata"`
+		Name   string `xml:"name,attr"`
+		Size   string `xml:"size,attr"`
+		Crc    string `xml:"crc,attr"`
+		Md5    string `xml:"md5,attr"`
+		Sha1   string `xml:"sha1,attr"`
+		Status string `xml:"status,attr"`
+	} `xml:"rom"`
+}
 
 type Datafile struct {
 	XMLName xml.Name `xml:"datafile"`
@@ -22,48 +49,67 @@ type Datafile struct {
 		Author      string `xml:"author"`
 		URL         string `xml:"url"`
 	} `xml:"header"`
-	Game []struct {
-		Text        string `xml:",chardata"`
-		Name        string `xml:"name,attr"`
-		Cloneof     string `xml:"cloneof,attr"`
-		Description string `xml:"description"`
-		Release     []struct {
-			Text   string `xml:",chardata"`
-			Name   string `xml:"name,attr"`
-			Region string `xml:"region,attr"`
-		} `xml:"release"`
-		Rom struct {
-			Text   string `xml:",chardata"`
-			Name   string `xml:"name,attr"`
-			Size   string `xml:"size,attr"`
-			Crc    string `xml:"crc,attr"`
-			Md5    string `xml:"md5,attr"`
-			Sha1   string `xml:"sha1,attr"`
-			Status string `xml:"status,attr"`
-		} `xml:"rom"`
-	} `xml:"game"`
+	Games []Game `xml:"game"`
 }
 
-func main() {
-	var GBADatafile Datafile
+func visit(datafile *Datafile, library *[]string) fs.WalkDirFunc {
+	return func(path string, d fs.DirEntry, err error) error {
+		if d.IsDir() {
+			return nil
+		}
+		game, err := identityGame(path, datafile)
+		if err != nil {
+			if err == noGameIdentified {
+				return nil
+			}
+			return err
+		}
+		*library = append(*library, game.Name)
+		return nil
+	}
+}
 
-	data, _ := ioutil.ReadFile("dat/Nintendo - Game Boy Advance (Parent-Clone) (20210506-095002).dat")
-
-	_ = xml.Unmarshal([]byte(data), &GBADatafile)
-
-	f, err := os.Open("rom/test.gba")
+func identityGame(path string, datafile *Datafile) (game Game, err error) {
+	f, err := os.Open(path)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
+
+	defer func(f *os.File) {
+		_ = f.Close()
+	}(f)
 
 	h := md5.New()
 	if _, err := io.Copy(h, f); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("%x", h.Sum(nil))
+	sprintf := fmt.Sprintf("%x", h.Sum(nil))
 
-	print("done!")
+	for _, game := range datafile.Games {
+		if game.Rom.Md5 == sprintf {
+			return game, nil
+		}
+	}
+	return Game{}, noGameIdentified
+}
+
+func main() {
+	var GBADatafile Datafile
+	GameLibrary := make([]string, 0)
+
+	data, _ := ioutil.ReadFile("dat/Nintendo - Game Boy Advance (Parent-Clone) (20210506-095002).dat")
+
+	_ = xml.Unmarshal(data, &GBADatafile)
+
+	start := time.Now()
+	err := filepath.WalkDir("D:\\ROMs\\Nintendo Gameboy Advance", visit(&GBADatafile, &GameLibrary))
+	if err != nil {
+		println(err)
+	}
+	duration := time.Since(start)
+	fmt.Println(duration)
+
+	fmt.Printf("%v", GameLibrary)
 
 }
