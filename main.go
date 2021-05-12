@@ -1,10 +1,14 @@
 package main
 
 import (
+	"crypto/md5"
 	"encoding/xml"
+	"fmt"
+	"io"
 	"io/ioutil"
+	"log"
+	"os"
 )
-
 
 type Datafile struct {
 	XMLName xml.Name `xml:"datafile"`
@@ -46,6 +50,19 @@ func main() {
 	data, _ := ioutil.ReadFile("dat/Nintendo - Game Boy Advance (Parent-Clone) (20210506-095002).dat")
 
 	_ = xml.Unmarshal([]byte(data), &GBADatafile)
+
+	f, err := os.Open("rom/test.gba")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+
+	h := md5.New()
+	if _, err := io.Copy(h, f); err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("%x", h.Sum(nil))
 
 	print("done!")
 
