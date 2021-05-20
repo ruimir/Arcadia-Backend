@@ -52,7 +52,7 @@ type Datafile struct {
 	Games []Game `xml:"game"`
 }
 
-func visit(datafile *Datafile, library *[]string) fs.WalkDirFunc {
+func visit(datafile *map[string]*Game, library *[]string) fs.WalkDirFunc {
 	return func(path string, d fs.DirEntry, err error) error {
 		if d.IsDir() {
 			return nil
@@ -69,7 +69,7 @@ func visit(datafile *Datafile, library *[]string) fs.WalkDirFunc {
 	}
 }
 
-func identityGame(path string, datafile *Datafile) (game Game, err error) {
+func identityGame(path string, datafile *map[string]*Game) (game *Game, err error) {
 	f, err := os.Open(path)
 	if err != nil {
 		log.Fatal(err)
@@ -86,24 +86,30 @@ func identityGame(path string, datafile *Datafile) (game Game, err error) {
 
 	sprintf := fmt.Sprintf("%x", h.Sum(nil))
 
-	for _, game := range datafile.Games {
-		if game.Rom.Md5 == sprintf {
-			return game, nil
-		}
+	ok := false
+	game, ok = (*datafile)[sprintf]
+	if ok {
+		return game, nil
 	}
-	return Game{}, noGameIdentified
+
+	return &Game{}, noGameIdentified
 }
 
 func main() {
 	var GBADatafile Datafile
+	HashPointer := make(map[string]*Game, 0)
 	GameLibrary := make([]string, 0)
 
 	data, _ := ioutil.ReadFile("dat/Nintendo - Game Boy Advance (Parent-Clone) (20210506-095002).dat")
 
 	_ = xml.Unmarshal(data, &GBADatafile)
 
+	for i, game := range GBADatafile.Games {
+		HashPointer[game.Rom.Md5] = &GBADatafile.Games[i]
+	}
+
 	start := time.Now()
-	err := filepath.WalkDir("D:\\ROMs\\Nintendo Gameboy Advance", visit(&GBADatafile, &GameLibrary))
+	err := filepath.WalkDir("D:\\ROMs\\Nintendo Gameboy Advance", visit(&HashPointer, &GameLibrary))
 	if err != nil {
 		println(err)
 	}
