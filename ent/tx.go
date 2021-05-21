@@ -12,8 +12,16 @@ import (
 // Tx is a transactional client that is created by calling Client.Tx().
 type Tx struct {
 	config
+	// Datafile is the client for interacting with the Datafile builders.
+	Datafile *DatafileClient
 	// Game is the client for interacting with the Game builders.
 	Game *GameClient
+	// Header is the client for interacting with the Header builders.
+	Header *HeaderClient
+	// Release is the client for interacting with the Release builders.
+	Release *ReleaseClient
+	// Rom is the client for interacting with the Rom builders.
+	Rom *RomClient
 
 	// lazily loaded.
 	client     *Client
@@ -149,7 +157,11 @@ func (tx *Tx) Client() *Client {
 }
 
 func (tx *Tx) init() {
+	tx.Datafile = NewDatafileClient(tx.config)
 	tx.Game = NewGameClient(tx.config)
+	tx.Header = NewHeaderClient(tx.config)
+	tx.Release = NewReleaseClient(tx.config)
+	tx.Rom = NewRomClient(tx.config)
 }
 
 // txDriver wraps the given dialect.Tx with a nop dialect.Driver implementation.
@@ -159,7 +171,7 @@ func (tx *Tx) init() {
 // of them in order to commit or rollback the transaction.
 //
 // If a closed transaction is embedded in one of the generated entities, and the entity
-// applies a query, for example: Game.QueryXXX(), the query will be executed
+// applies a query, for example: Datafile.QueryXXX(), the query will be executed
 // through the driver which created this transaction.
 //
 // Note that txDriver is not goroutine safe.

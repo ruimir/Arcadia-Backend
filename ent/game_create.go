@@ -3,8 +3,12 @@
 package ent
 
 import (
+	"Backend/ent/datafile"
 	"Backend/ent/game"
+	"Backend/ent/release"
+	"Backend/ent/rom"
 	"context"
+	"errors"
 	"fmt"
 
 	"entgo.io/ent/dialect/sql/sqlgraph"
@@ -16,6 +20,77 @@ type GameCreate struct {
 	config
 	mutation *GameMutation
 	hooks    []Hook
+}
+
+// SetName sets the "name" field.
+func (gc *GameCreate) SetName(s string) *GameCreate {
+	gc.mutation.SetName(s)
+	return gc
+}
+
+// SetCloneof sets the "cloneof" field.
+func (gc *GameCreate) SetCloneof(s string) *GameCreate {
+	gc.mutation.SetCloneof(s)
+	return gc
+}
+
+// SetDescription sets the "description" field.
+func (gc *GameCreate) SetDescription(s string) *GameCreate {
+	gc.mutation.SetDescription(s)
+	return gc
+}
+
+// SetDatafileID sets the "datafile" edge to the Datafile entity by ID.
+func (gc *GameCreate) SetDatafileID(id int) *GameCreate {
+	gc.mutation.SetDatafileID(id)
+	return gc
+}
+
+// SetNillableDatafileID sets the "datafile" edge to the Datafile entity by ID if the given value is not nil.
+func (gc *GameCreate) SetNillableDatafileID(id *int) *GameCreate {
+	if id != nil {
+		gc = gc.SetDatafileID(*id)
+	}
+	return gc
+}
+
+// SetDatafile sets the "datafile" edge to the Datafile entity.
+func (gc *GameCreate) SetDatafile(d *Datafile) *GameCreate {
+	return gc.SetDatafileID(d.ID)
+}
+
+// AddReleaseIDs adds the "releases" edge to the Release entity by IDs.
+func (gc *GameCreate) AddReleaseIDs(ids ...int) *GameCreate {
+	gc.mutation.AddReleaseIDs(ids...)
+	return gc
+}
+
+// AddReleases adds the "releases" edges to the Release entity.
+func (gc *GameCreate) AddReleases(r ...*Release) *GameCreate {
+	ids := make([]int, len(r))
+	for i := range r {
+		ids[i] = r[i].ID
+	}
+	return gc.AddReleaseIDs(ids...)
+}
+
+// SetRomID sets the "rom" edge to the Rom entity by ID.
+func (gc *GameCreate) SetRomID(id int) *GameCreate {
+	gc.mutation.SetRomID(id)
+	return gc
+}
+
+// SetNillableRomID sets the "rom" edge to the Rom entity by ID if the given value is not nil.
+func (gc *GameCreate) SetNillableRomID(id *int) *GameCreate {
+	if id != nil {
+		gc = gc.SetRomID(*id)
+	}
+	return gc
+}
+
+// SetRom sets the "rom" edge to the Rom entity.
+func (gc *GameCreate) SetRom(r *Rom) *GameCreate {
+	return gc.SetRomID(r.ID)
 }
 
 // Mutation returns the GameMutation object of the builder.
@@ -69,6 +144,15 @@ func (gc *GameCreate) SaveX(ctx context.Context) *Game {
 
 // check runs all checks and user-defined validators on the builder.
 func (gc *GameCreate) check() error {
+	if _, ok := gc.mutation.Name(); !ok {
+		return &ValidationError{Name: "name", err: errors.New("ent: missing required field \"name\"")}
+	}
+	if _, ok := gc.mutation.Cloneof(); !ok {
+		return &ValidationError{Name: "cloneof", err: errors.New("ent: missing required field \"cloneof\"")}
+	}
+	if _, ok := gc.mutation.Description(); !ok {
+		return &ValidationError{Name: "description", err: errors.New("ent: missing required field \"description\"")}
+	}
 	return nil
 }
 
@@ -96,6 +180,88 @@ func (gc *GameCreate) createSpec() (*Game, *sqlgraph.CreateSpec) {
 			},
 		}
 	)
+	if value, ok := gc.mutation.Name(); ok {
+		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldName,
+		})
+		_node.Name = value
+	}
+	if value, ok := gc.mutation.Cloneof(); ok {
+		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldCloneof,
+		})
+		_node.Cloneof = value
+	}
+	if value, ok := gc.mutation.Description(); ok {
+		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldDescription,
+		})
+		_node.Description = value
+	}
+	if nodes := gc.mutation.DatafileIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.M2O,
+			Inverse: true,
+			Table:   game.DatafileTable,
+			Columns: []string{game.DatafileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: datafile.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_node.datafile_games = &nodes[0]
+		_spec.Edges = append(_spec.Edges, edge)
+	}
+	if nodes := gc.mutation.ReleasesIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
+	}
+	if nodes := gc.mutation.RomIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2O,
+			Inverse: false,
+			Table:   game.RomTable,
+			Columns: []string{game.RomColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: rom.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges = append(_spec.Edges, edge)
+	}
 	return _node, _spec
 }
 

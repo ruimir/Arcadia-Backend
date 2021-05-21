@@ -6,5 +6,17 @@ import (
 	"entgo.io/ent/dialect/sql"
 )
 
+// Datafile is the predicate function for datafile builders.
+type Datafile func(*sql.Selector)
+
 // Game is the predicate function for game builders.
 type Game func(*sql.Selector)
+
+// Header is the predicate function for header builders.
+type Header func(*sql.Selector)
+
+// Release is the predicate function for release builders.
+type Release func(*sql.Selector)
+
+// Rom is the predicate function for rom builders.
+type Rom func(*sql.Selector)

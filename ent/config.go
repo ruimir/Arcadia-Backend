@@ -24,7 +24,11 @@ type config struct {
 
 // hooks per client, for fast access.
 type hooks struct {
-	Game []ent.Hook
+	Datafile []ent.Hook
+	Game     []ent.Hook
+	Header   []ent.Hook
+	Release  []ent.Hook
+	Rom      []ent.Hook
 }
 
 // Options applies the options on the config object.

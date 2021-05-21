@@ -1,10 +1,14 @@
 package main
 
 import (
+	"Backend/ent"
+	"context"
 	"crypto/md5"
 	"encoding/xml"
+	"entgo.io/ent/dialect"
 	"errors"
 	"fmt"
+	_ "github.com/mattn/go-sqlite3"
 	"io"
 	"io/fs"
 	"io/ioutil"
@@ -104,12 +108,21 @@ func main() {
 
 	_ = xml.Unmarshal(data, &GBADatafile)
 
+	client, err := ent.Open(dialect.SQLite, "file:arcadia.db?mode=rwc&cache=shared&_fk=1")
+	if err != nil {
+		log.Fatalf("failed opening connection to sqlite: %v", err)
+	}
+	defer client.Close()
+	ctx := context.Background()
+
+	err, _ = fillTable(err, client, ctx, GBADatafile)
+
 	for i, game := range GBADatafile.Games {
 		HashPointer[game.Rom.Md5] = &GBADatafile.Games[i]
 	}
 
 	start := time.Now()
-	err := filepath.WalkDir("D:\\ROMs\\Nintendo Gameboy Advance", visit(&HashPointer, &GameLibrary))
+	err = filepath.WalkDir("D:\\ROMs\\Nintendo Gameboy Advance", visit(&HashPointer, &GameLibrary))
 	if err != nil {
 		println(err)
 	}
@@ -118,4 +131,17 @@ func main() {
 
 	fmt.Printf("%v", GameLibrary)
 
+}
+
+func fillTable(err error, client *ent.Client, ctx context.Context, GBADatafile Datafile) (error, bool) {
+	datafile, err := client.Datafile.Create().Save(ctx)
+	if err != nil {
+		return nil, true
+	}
+
+	_, err = client.Header.Create().SetDatafile(datafile).SetAuthor(GBADatafile.Header.Author).Save(ctx)
+	if err != nil {
+		return nil, true
+	}
+	return err, false
 }

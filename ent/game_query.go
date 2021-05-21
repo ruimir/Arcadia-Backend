@@ -3,9 +3,13 @@
 package ent
 
 import (
+	"Backend/ent/datafile"
 	"Backend/ent/game"
 	"Backend/ent/predicate"
+	"Backend/ent/release"
+	"Backend/ent/rom"
 	"context"
+	"database/sql/driver"
 	"errors"
 	"fmt"
 	"math"
@@ -24,6 +28,11 @@ type GameQuery struct {
 	order      []OrderFunc
 	fields     []string
 	predicates []predicate.Game
+	// eager-loading edges.
+	withDatafile *DatafileQuery
+	withReleases *ReleaseQuery
+	withRom      *RomQuery
+	withFKs      bool
 	// intermediate query (i.e. traversal path).
 	sql  *sql.Selector
 	path func(context.Context) (*sql.Selector, error)
@@ -58,6 +67,72 @@ func (gq *GameQuery) Unique(unique bool) *GameQuery {
 func (gq *GameQuery) Order(o ...OrderFunc) *GameQuery {
 	gq.order = append(gq.order, o...)
 	return gq
+}
+
+// QueryDatafile chains the current query on the "datafile" edge.
+func (gq *GameQuery) QueryDatafile() *DatafileQuery {
+	query := &DatafileQuery{config: gq.config}
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := gq.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := gq.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(game.Table, game.FieldID, selector),
+			sqlgraph.To(datafile.Table, datafile.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, game.DatafileTable, game.DatafileColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(gq.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
+// QueryReleases chains the current query on the "releases" edge.
+func (gq *GameQuery) QueryReleases() *ReleaseQuery {
+	query := &ReleaseQuery{config: gq.config}
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := gq.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := gq.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(game.Table, game.FieldID, selector),
+			sqlgraph.To(release.Table, release.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, game.ReleasesTable, game.ReleasesColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(gq.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
+// QueryRom chains the current query on the "rom" edge.
+func (gq *GameQuery) QueryRom() *RomQuery {
+	query := &RomQuery{config: gq.config}
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := gq.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := gq.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(game.Table, game.FieldID, selector),
+			sqlgraph.To(rom.Table, rom.FieldID),
+			sqlgraph.Edge(sqlgraph.O2O, false, game.RomTable, game.RomColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(gq.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
 }
 
 // First returns the first Game entity from the query.
@@ -236,19 +311,68 @@ func (gq *GameQuery) Clone() *GameQuery {
 		return nil
 	}
 	return &GameQuery{
-		config:     gq.config,
-		limit:      gq.limit,
-		offset:     gq.offset,
-		order:      append([]OrderFunc{}, gq.order...),
-		predicates: append([]predicate.Game{}, gq.predicates...),
+		config:       gq.config,
+		limit:        gq.limit,
+		offset:       gq.offset,
+		order:        append([]OrderFunc{}, gq.order...),
+		predicates:   append([]predicate.Game{}, gq.predicates...),
+		withDatafile: gq.withDatafile.Clone(),
+		withReleases: gq.withReleases.Clone(),
+		withRom:      gq.withRom.Clone(),
 		// clone intermediate query.
 		sql:  gq.sql.Clone(),
 		path: gq.path,
 	}
 }
 
+// WithDatafile tells the query-builder to eager-load the nodes that are connected to
+// the "datafile" edge. The optional arguments are used to configure the query builder of the edge.
+func (gq *GameQuery) WithDatafile(opts ...func(*DatafileQuery)) *GameQuery {
+	query := &DatafileQuery{config: gq.config}
+	for _, opt := range opts {
+		opt(query)
+	}
+	gq.withDatafile = query
+	return gq
+}
+
+// WithReleases tells the query-builder to eager-load the nodes that are connected to
+// the "releases" edge. The optional arguments are used to configure the query builder of the edge.
+func (gq *GameQuery) WithReleases(opts ...func(*ReleaseQuery)) *GameQuery {
+	query := &ReleaseQuery{config: gq.config}
+	for _, opt := range opts {
+		opt(query)
+	}
+	gq.withReleases = query
+	return gq
+}
+
+// WithRom tells the query-builder to eager-load the nodes that are connected to
+// the "rom" edge. The optional arguments are used to configure the query builder of the edge.
+func (gq *GameQuery) WithRom(opts ...func(*RomQuery)) *GameQuery {
+	query := &RomQuery{config: gq.config}
+	for _, opt := range opts {
+		opt(query)
+	}
+	gq.withRom = query
+	return gq
+}
+
 // GroupBy is used to group vertices by one or more fields/columns.
 // It is often used with aggregate functions, like: count, max, mean, min, sum.
+//
+// Example:
+//
+//	var v []struct {
+//		Name string `json:"name,omitempty"`
+//		Count int `json:"count,omitempty"`
+//	}
+//
+//	client.Game.Query().
+//		GroupBy(game.FieldName).
+//		Aggregate(ent.Count()).
+//		Scan(ctx, &v)
+//
 func (gq *GameQuery) GroupBy(field string, fields ...string) *GameGroupBy {
 	group := &GameGroupBy{config: gq.config}
 	group.fields = append([]string{field}, fields...)
@@ -263,6 +387,17 @@ func (gq *GameQuery) GroupBy(field string, fields ...string) *GameGroupBy {
 
 // Select allows the selection one or more fields/columns for the given query,
 // instead of selecting all fields in the entity.
+//
+// Example:
+//
+//	var v []struct {
+//		Name string `json:"name,omitempty"`
+//	}
+//
+//	client.Game.Query().
+//		Select(game.FieldName).
+//		Scan(ctx, &v)
+//
 func (gq *GameQuery) Select(field string, fields ...string) *GameSelect {
 	gq.fields = append([]string{field}, fields...)
 	return &GameSelect{GameQuery: gq}
@@ -286,9 +421,21 @@ func (gq *GameQuery) prepareQuery(ctx context.Context) error {
 
 func (gq *GameQuery) sqlAll(ctx context.Context) ([]*Game, error) {
 	var (
-		nodes = []*Game{}
-		_spec = gq.querySpec()
+		nodes       = []*Game{}
+		withFKs     = gq.withFKs
+		_spec       = gq.querySpec()
+		loadedTypes = [3]bool{
+			gq.withDatafile != nil,
+			gq.withReleases != nil,
+			gq.withRom != nil,
+		}
 	)
+	if gq.withDatafile != nil {
+		withFKs = true
+	}
+	if withFKs {
+		_spec.Node.Columns = append(_spec.Node.Columns, game.ForeignKeys...)
+	}
 	_spec.ScanValues = func(columns []string) ([]interface{}, error) {
 		node := &Game{config: gq.config}
 		nodes = append(nodes, node)
@@ -299,6 +446,7 @@ func (gq *GameQuery) sqlAll(ctx context.Context) ([]*Game, error) {
 			return fmt.Errorf("ent: Assign called without calling ScanValues")
 		}
 		node := nodes[len(nodes)-1]
+		node.Edges.loadedTypes = loadedTypes
 		return node.assignValues(columns, values)
 	}
 	if err := sqlgraph.QueryNodes(ctx, gq.driver, _spec); err != nil {
@@ -307,6 +455,93 @@ func (gq *GameQuery) sqlAll(ctx context.Context) ([]*Game, error) {
 	if len(nodes) == 0 {
 		return nodes, nil
 	}
+
+	if query := gq.withDatafile; query != nil {
+		ids := make([]int, 0, len(nodes))
+		nodeids := make(map[int][]*Game)
+		for i := range nodes {
+			if nodes[i].datafile_games == nil {
+				continue
+			}
+			fk := *nodes[i].datafile_games
+			if _, ok := nodeids[fk]; !ok {
+				ids = append(ids, fk)
+			}
+			nodeids[fk] = append(nodeids[fk], nodes[i])
+		}
+		query.Where(datafile.IDIn(ids...))
+		neighbors, err := query.All(ctx)
+		if err != nil {
+			return nil, err
+		}
+		for _, n := range neighbors {
+			nodes, ok := nodeids[n.ID]
+			if !ok {
+				return nil, fmt.Errorf(`unexpected foreign-key "datafile_games" returned %v`, n.ID)
+			}
+			for i := range nodes {
+				nodes[i].Edges.Datafile = n
+			}
+		}
+	}
+
+	if query := gq.withReleases; query != nil {
+		fks := make([]driver.Value, 0, len(nodes))
+		nodeids := make(map[int]*Game)
+		for i := range nodes {
+			fks = append(fks, nodes[i].ID)
+			nodeids[nodes[i].ID] = nodes[i]
+			nodes[i].Edges.Releases = []*Release{}
+		}
+		query.withFKs = true
+		query.Where(predicate.Release(func(s *sql.Selector) {
+			s.Where(sql.InValues(game.ReleasesColumn, fks...))
+		}))
+		neighbors, err := query.All(ctx)
+		if err != nil {
+			return nil, err
+		}
+		for _, n := range neighbors {
+			fk := n.game_releases
+			if fk == nil {
+				return nil, fmt.Errorf(`foreign-key "game_releases" is nil for node %v`, n.ID)
+			}
+			node, ok := nodeids[*fk]
+			if !ok {
+				return nil, fmt.Errorf(`unexpected foreign-key "game_releases" returned %v for node %v`, *fk, n.ID)
+			}
+			node.Edges.Releases = append(node.Edges.Releases, n)
+		}
+	}
+
+	if query := gq.withRom; query != nil {
+		fks := make([]driver.Value, 0, len(nodes))
+		nodeids := make(map[int]*Game)
+		for i := range nodes {
+			fks = append(fks, nodes[i].ID)
+			nodeids[nodes[i].ID] = nodes[i]
+		}
+		query.withFKs = true
+		query.Where(predicate.Rom(func(s *sql.Selector) {
+			s.Where(sql.InValues(game.RomColumn, fks...))
+		}))
+		neighbors, err := query.All(ctx)
+		if err != nil {
+			return nil, err
+		}
+		for _, n := range neighbors {
+			fk := n.game_rom
+			if fk == nil {
+				return nil, fmt.Errorf(`foreign-key "game_rom" is nil for node %v`, n.ID)
+			}
+			node, ok := nodeids[*fk]
+			if !ok {
+				return nil, fmt.Errorf(`unexpected foreign-key "game_rom" returned %v for node %v`, *fk, n.ID)
+			}
+			node.Edges.Rom = n
+		}
+	}
+
 	return nodes, nil
 }
 

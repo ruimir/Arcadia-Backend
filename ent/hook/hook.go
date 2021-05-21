@@ -8,6 +8,19 @@ import (
 	"fmt"
 )
 
+// The DatafileFunc type is an adapter to allow the use of ordinary
+// function as Datafile mutator.
+type DatafileFunc func(context.Context, *ent.DatafileMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f DatafileFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	mv, ok := m.(*ent.DatafileMutation)
+	if !ok {
+		return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.DatafileMutation", m)
+	}
+	return f(ctx, mv)
+}
+
 // The GameFunc type is an adapter to allow the use of ordinary
 // function as Game mutator.
 type GameFunc func(context.Context, *ent.GameMutation) (ent.Value, error)
@@ -17,6 +30,45 @@ func (f GameFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error)
 	mv, ok := m.(*ent.GameMutation)
 	if !ok {
 		return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.GameMutation", m)
+	}
+	return f(ctx, mv)
+}
+
+// The HeaderFunc type is an adapter to allow the use of ordinary
+// function as Header mutator.
+type HeaderFunc func(context.Context, *ent.HeaderMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f HeaderFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	mv, ok := m.(*ent.HeaderMutation)
+	if !ok {
+		return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.HeaderMutation", m)
+	}
+	return f(ctx, mv)
+}
+
+// The ReleaseFunc type is an adapter to allow the use of ordinary
+// function as Release mutator.
+type ReleaseFunc func(context.Context, *ent.ReleaseMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f ReleaseFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	mv, ok := m.(*ent.ReleaseMutation)
+	if !ok {
+		return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.ReleaseMutation", m)
+	}
+	return f(ctx, mv)
+}
+
+// The RomFunc type is an adapter to allow the use of ordinary
+// function as Rom mutator.
+type RomFunc func(context.Context, *ent.RomMutation) (ent.Value, error)
+
+// Mutate calls f(ctx, m).
+func (f RomFunc) Mutate(ctx context.Context, m ent.Mutation) (ent.Value, error) {
+	mv, ok := m.(*ent.RomMutation)
+	if !ok {
+		return nil, fmt.Errorf("unexpected mutation type %T. expect *ent.RomMutation", m)
 	}
 	return f(ctx, mv)
 }

@@ -3,8 +3,11 @@
 package ent
 
 import (
+	"Backend/ent/datafile"
 	"Backend/ent/game"
 	"Backend/ent/predicate"
+	"Backend/ent/release"
+	"Backend/ent/rom"
 	"context"
 	"fmt"
 
@@ -26,9 +29,113 @@ func (gu *GameUpdate) Where(ps ...predicate.Game) *GameUpdate {
 	return gu
 }
 
+// SetName sets the "name" field.
+func (gu *GameUpdate) SetName(s string) *GameUpdate {
+	gu.mutation.SetName(s)
+	return gu
+}
+
+// SetCloneof sets the "cloneof" field.
+func (gu *GameUpdate) SetCloneof(s string) *GameUpdate {
+	gu.mutation.SetCloneof(s)
+	return gu
+}
+
+// SetDescription sets the "description" field.
+func (gu *GameUpdate) SetDescription(s string) *GameUpdate {
+	gu.mutation.SetDescription(s)
+	return gu
+}
+
+// SetDatafileID sets the "datafile" edge to the Datafile entity by ID.
+func (gu *GameUpdate) SetDatafileID(id int) *GameUpdate {
+	gu.mutation.SetDatafileID(id)
+	return gu
+}
+
+// SetNillableDatafileID sets the "datafile" edge to the Datafile entity by ID if the given value is not nil.
+func (gu *GameUpdate) SetNillableDatafileID(id *int) *GameUpdate {
+	if id != nil {
+		gu = gu.SetDatafileID(*id)
+	}
+	return gu
+}
+
+// SetDatafile sets the "datafile" edge to the Datafile entity.
+func (gu *GameUpdate) SetDatafile(d *Datafile) *GameUpdate {
+	return gu.SetDatafileID(d.ID)
+}
+
+// AddReleaseIDs adds the "releases" edge to the Release entity by IDs.
+func (gu *GameUpdate) AddReleaseIDs(ids ...int) *GameUpdate {
+	gu.mutation.AddReleaseIDs(ids...)
+	return gu
+}
+
+// AddReleases adds the "releases" edges to the Release entity.
+func (gu *GameUpdate) AddReleases(r ...*Release) *GameUpdate {
+	ids := make([]int, len(r))
+	for i := range r {
+		ids[i] = r[i].ID
+	}
+	return gu.AddReleaseIDs(ids...)
+}
+
+// SetRomID sets the "rom" edge to the Rom entity by ID.
+func (gu *GameUpdate) SetRomID(id int) *GameUpdate {
+	gu.mutation.SetRomID(id)
+	return gu
+}
+
+// SetNillableRomID sets the "rom" edge to the Rom entity by ID if the given value is not nil.
+func (gu *GameUpdate) SetNillableRomID(id *int) *GameUpdate {
+	if id != nil {
+		gu = gu.SetRomID(*id)
+	}
+	return gu
+}
+
+// SetRom sets the "rom" edge to the Rom entity.
+func (gu *GameUpdate) SetRom(r *Rom) *GameUpdate {
+	return gu.SetRomID(r.ID)
+}
+
 // Mutation returns the GameMutation object of the builder.
 func (gu *GameUpdate) Mutation() *GameMutation {
 	return gu.mutation
+}
+
+// ClearDatafile clears the "datafile" edge to the Datafile entity.
+func (gu *GameUpdate) ClearDatafile() *GameUpdate {
+	gu.mutation.ClearDatafile()
+	return gu
+}
+
+// ClearReleases clears all "releases" edges to the Release entity.
+func (gu *GameUpdate) ClearReleases() *GameUpdate {
+	gu.mutation.ClearReleases()
+	return gu
+}
+
+// RemoveReleaseIDs removes the "releases" edge to Release entities by IDs.
+func (gu *GameUpdate) RemoveReleaseIDs(ids ...int) *GameUpdate {
+	gu.mutation.RemoveReleaseIDs(ids...)
+	return gu
+}
+
+// RemoveReleases removes "releases" edges to Release entities.
+func (gu *GameUpdate) RemoveReleases(r ...*Release) *GameUpdate {
+	ids := make([]int, len(r))
+	for i := range r {
+		ids[i] = r[i].ID
+	}
+	return gu.RemoveReleaseIDs(ids...)
+}
+
+// ClearRom clears the "rom" edge to the Rom entity.
+func (gu *GameUpdate) ClearRom() *GameUpdate {
+	gu.mutation.ClearRom()
+	return gu
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
@@ -100,6 +207,151 @@ func (gu *GameUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
+	if value, ok := gu.mutation.Name(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldName,
+		})
+	}
+	if value, ok := gu.mutation.Cloneof(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldCloneof,
+		})
+	}
+	if value, ok := gu.mutation.Description(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldDescription,
+		})
+	}
+	if gu.mutation.DatafileCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.M2O,
+			Inverse: true,
+			Table:   game.DatafileTable,
+			Columns: []string{game.DatafileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: datafile.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := gu.mutation.DatafileIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.M2O,
+			Inverse: true,
+			Table:   game.DatafileTable,
+			Columns: []string{game.DatafileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: datafile.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if gu.mutation.ReleasesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := gu.mutation.RemovedReleasesIDs(); len(nodes) > 0 && !gu.mutation.ReleasesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := gu.mutation.ReleasesIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if gu.mutation.RomCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2O,
+			Inverse: false,
+			Table:   game.RomTable,
+			Columns: []string{game.RomColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: rom.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := gu.mutation.RomIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2O,
+			Inverse: false,
+			Table:   game.RomTable,
+			Columns: []string{game.RomColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: rom.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
 	if n, err = sqlgraph.UpdateNodes(ctx, gu.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{game.Label}
@@ -119,9 +371,113 @@ type GameUpdateOne struct {
 	mutation *GameMutation
 }
 
+// SetName sets the "name" field.
+func (guo *GameUpdateOne) SetName(s string) *GameUpdateOne {
+	guo.mutation.SetName(s)
+	return guo
+}
+
+// SetCloneof sets the "cloneof" field.
+func (guo *GameUpdateOne) SetCloneof(s string) *GameUpdateOne {
+	guo.mutation.SetCloneof(s)
+	return guo
+}
+
+// SetDescription sets the "description" field.
+func (guo *GameUpdateOne) SetDescription(s string) *GameUpdateOne {
+	guo.mutation.SetDescription(s)
+	return guo
+}
+
+// SetDatafileID sets the "datafile" edge to the Datafile entity by ID.
+func (guo *GameUpdateOne) SetDatafileID(id int) *GameUpdateOne {
+	guo.mutation.SetDatafileID(id)
+	return guo
+}
+
+// SetNillableDatafileID sets the "datafile" edge to the Datafile entity by ID if the given value is not nil.
+func (guo *GameUpdateOne) SetNillableDatafileID(id *int) *GameUpdateOne {
+	if id != nil {
+		guo = guo.SetDatafileID(*id)
+	}
+	return guo
+}
+
+// SetDatafile sets the "datafile" edge to the Datafile entity.
+func (guo *GameUpdateOne) SetDatafile(d *Datafile) *GameUpdateOne {
+	return guo.SetDatafileID(d.ID)
+}
+
+// AddReleaseIDs adds the "releases" edge to the Release entity by IDs.
+func (guo *GameUpdateOne) AddReleaseIDs(ids ...int) *GameUpdateOne {
+	guo.mutation.AddReleaseIDs(ids...)
+	return guo
+}
+
+// AddReleases adds the "releases" edges to the Release entity.
+func (guo *GameUpdateOne) AddReleases(r ...*Release) *GameUpdateOne {
+	ids := make([]int, len(r))
+	for i := range r {
+		ids[i] = r[i].ID
+	}
+	return guo.AddReleaseIDs(ids...)
+}
+
+// SetRomID sets the "rom" edge to the Rom entity by ID.
+func (guo *GameUpdateOne) SetRomID(id int) *GameUpdateOne {
+	guo.mutation.SetRomID(id)
+	return guo
+}
+
+// SetNillableRomID sets the "rom" edge to the Rom entity by ID if the given value is not nil.
+func (guo *GameUpdateOne) SetNillableRomID(id *int) *GameUpdateOne {
+	if id != nil {
+		guo = guo.SetRomID(*id)
+	}
+	return guo
+}
+
+// SetRom sets the "rom" edge to the Rom entity.
+func (guo *GameUpdateOne) SetRom(r *Rom) *GameUpdateOne {
+	return guo.SetRomID(r.ID)
+}
+
 // Mutation returns the GameMutation object of the builder.
 func (guo *GameUpdateOne) Mutation() *GameMutation {
 	return guo.mutation
+}
+
+// ClearDatafile clears the "datafile" edge to the Datafile entity.
+func (guo *GameUpdateOne) ClearDatafile() *GameUpdateOne {
+	guo.mutation.ClearDatafile()
+	return guo
+}
+
+// ClearReleases clears all "releases" edges to the Release entity.
+func (guo *GameUpdateOne) ClearReleases() *GameUpdateOne {
+	guo.mutation.ClearReleases()
+	return guo
+}
+
+// RemoveReleaseIDs removes the "releases" edge to Release entities by IDs.
+func (guo *GameUpdateOne) RemoveReleaseIDs(ids ...int) *GameUpdateOne {
+	guo.mutation.RemoveReleaseIDs(ids...)
+	return guo
+}
+
+// RemoveReleases removes "releases" edges to Release entities.
+func (guo *GameUpdateOne) RemoveReleases(r ...*Release) *GameUpdateOne {
+	ids := make([]int, len(r))
+	for i := range r {
+		ids[i] = r[i].ID
+	}
+	return guo.RemoveReleaseIDs(ids...)
+}
+
+// ClearRom clears the "rom" edge to the Rom entity.
+func (guo *GameUpdateOne) ClearRom() *GameUpdateOne {
+	guo.mutation.ClearRom()
+	return guo
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
@@ -216,6 +572,151 @@ func (guo *GameUpdateOne) sqlSave(ctx context.Context) (_node *Game, err error) 
 				ps[i](selector)
 			}
 		}
+	}
+	if value, ok := guo.mutation.Name(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldName,
+		})
+	}
+	if value, ok := guo.mutation.Cloneof(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldCloneof,
+		})
+	}
+	if value, ok := guo.mutation.Description(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: game.FieldDescription,
+		})
+	}
+	if guo.mutation.DatafileCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.M2O,
+			Inverse: true,
+			Table:   game.DatafileTable,
+			Columns: []string{game.DatafileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: datafile.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := guo.mutation.DatafileIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.M2O,
+			Inverse: true,
+			Table:   game.DatafileTable,
+			Columns: []string{game.DatafileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: datafile.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if guo.mutation.ReleasesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := guo.mutation.RemovedReleasesIDs(); len(nodes) > 0 && !guo.mutation.ReleasesCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := guo.mutation.ReleasesIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: false,
+			Table:   game.ReleasesTable,
+			Columns: []string{game.ReleasesColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: release.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if guo.mutation.RomCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2O,
+			Inverse: false,
+			Table:   game.RomTable,
+			Columns: []string{game.RomColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: rom.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := guo.mutation.RomIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2O,
+			Inverse: false,
+			Table:   game.RomTable,
+			Columns: []string{game.RomColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: rom.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
 	_node = &Game{config: guo.config}
 	_spec.Assign = _node.assignValues

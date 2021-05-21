@@ -8,22 +8,123 @@ import (
 )
 
 var (
+	// DatafilesColumns holds the columns for the "datafiles" table.
+	DatafilesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeInt, Increment: true},
+	}
+	// DatafilesTable holds the schema information for the "datafiles" table.
+	DatafilesTable = &schema.Table{
+		Name:        "datafiles",
+		Columns:     DatafilesColumns,
+		PrimaryKey:  []*schema.Column{DatafilesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{},
+	}
 	// GamesColumns holds the columns for the "games" table.
 	GamesColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "name", Type: field.TypeString},
+		{Name: "cloneof", Type: field.TypeString},
+		{Name: "description", Type: field.TypeString},
+		{Name: "datafile_games", Type: field.TypeInt, Nullable: true},
 	}
 	// GamesTable holds the schema information for the "games" table.
 	GamesTable = &schema.Table{
-		Name:        "games",
-		Columns:     GamesColumns,
-		PrimaryKey:  []*schema.Column{GamesColumns[0]},
-		ForeignKeys: []*schema.ForeignKey{},
+		Name:       "games",
+		Columns:    GamesColumns,
+		PrimaryKey: []*schema.Column{GamesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "games_datafiles_games",
+				Columns:    []*schema.Column{GamesColumns[4]},
+				RefColumns: []*schema.Column{DatafilesColumns[0]},
+				OnDelete:   schema.SetNull,
+			},
+		},
+	}
+	// HeadersColumns holds the columns for the "headers" table.
+	HeadersColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "name", Type: field.TypeString},
+		{Name: "description", Type: field.TypeString},
+		{Name: "version", Type: field.TypeString},
+		{Name: "date", Type: field.TypeString},
+		{Name: "author", Type: field.TypeString},
+		{Name: "url", Type: field.TypeString},
+		{Name: "datafile_header", Type: field.TypeInt, Unique: true, Nullable: true},
+	}
+	// HeadersTable holds the schema information for the "headers" table.
+	HeadersTable = &schema.Table{
+		Name:       "headers",
+		Columns:    HeadersColumns,
+		PrimaryKey: []*schema.Column{HeadersColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "headers_datafiles_header",
+				Columns:    []*schema.Column{HeadersColumns[7]},
+				RefColumns: []*schema.Column{DatafilesColumns[0]},
+				OnDelete:   schema.SetNull,
+			},
+		},
+	}
+	// ReleasesColumns holds the columns for the "releases" table.
+	ReleasesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "name", Type: field.TypeString},
+		{Name: "region", Type: field.TypeString},
+		{Name: "game_releases", Type: field.TypeInt, Nullable: true},
+	}
+	// ReleasesTable holds the schema information for the "releases" table.
+	ReleasesTable = &schema.Table{
+		Name:       "releases",
+		Columns:    ReleasesColumns,
+		PrimaryKey: []*schema.Column{ReleasesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "releases_games_releases",
+				Columns:    []*schema.Column{ReleasesColumns[3]},
+				RefColumns: []*schema.Column{GamesColumns[0]},
+				OnDelete:   schema.SetNull,
+			},
+		},
+	}
+	// RomsColumns holds the columns for the "roms" table.
+	RomsColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "name", Type: field.TypeString},
+		{Name: "size", Type: field.TypeString},
+		{Name: "crc", Type: field.TypeString},
+		{Name: "md5", Type: field.TypeString},
+		{Name: "sha1", Type: field.TypeString},
+		{Name: "status", Type: field.TypeString},
+		{Name: "game_rom", Type: field.TypeInt, Unique: true, Nullable: true},
+	}
+	// RomsTable holds the schema information for the "roms" table.
+	RomsTable = &schema.Table{
+		Name:       "roms",
+		Columns:    RomsColumns,
+		PrimaryKey: []*schema.Column{RomsColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "roms_games_rom",
+				Columns:    []*schema.Column{RomsColumns[7]},
+				RefColumns: []*schema.Column{GamesColumns[0]},
+				OnDelete:   schema.SetNull,
+			},
+		},
 	}
 	// Tables holds all the tables in the schema.
 	Tables = []*schema.Table{
+		DatafilesTable,
 		GamesTable,
+		HeadersTable,
+		ReleasesTable,
+		RomsTable,
 	}
 )
 
 func init() {
+	GamesTable.ForeignKeys[0].RefTable = DatafilesTable
+	HeadersTable.ForeignKeys[0].RefTable = DatafilesTable
+	ReleasesTable.ForeignKeys[0].RefTable = GamesTable
+	RomsTable.ForeignKeys[0].RefTable = GamesTable
 }

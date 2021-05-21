@@ -9,10 +9,15 @@ import (
 
 	"Backend/ent/migrate"
 
+	"Backend/ent/datafile"
 	"Backend/ent/game"
+	"Backend/ent/header"
+	"Backend/ent/release"
+	"Backend/ent/rom"
 
 	"entgo.io/ent/dialect"
 	"entgo.io/ent/dialect/sql"
+	"entgo.io/ent/dialect/sql/sqlgraph"
 )
 
 // Client is the client that holds all ent builders.
@@ -20,8 +25,16 @@ type Client struct {
 	config
 	// Schema is the client for creating, migrating and dropping schema.
 	Schema *migrate.Schema
+	// Datafile is the client for interacting with the Datafile builders.
+	Datafile *DatafileClient
 	// Game is the client for interacting with the Game builders.
 	Game *GameClient
+	// Header is the client for interacting with the Header builders.
+	Header *HeaderClient
+	// Release is the client for interacting with the Release builders.
+	Release *ReleaseClient
+	// Rom is the client for interacting with the Rom builders.
+	Rom *RomClient
 }
 
 // NewClient creates a new client configured with the given options.
@@ -35,7 +48,11 @@ func NewClient(opts ...Option) *Client {
 
 func (c *Client) init() {
 	c.Schema = migrate.NewSchema(c.driver)
+	c.Datafile = NewDatafileClient(c.config)
 	c.Game = NewGameClient(c.config)
+	c.Header = NewHeaderClient(c.config)
+	c.Release = NewReleaseClient(c.config)
+	c.Rom = NewRomClient(c.config)
 }
 
 // Open opens a database/sql.DB specified by the driver name and
@@ -67,9 +84,13 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 	cfg := c.config
 	cfg.driver = tx
 	return &Tx{
-		ctx:    ctx,
-		config: cfg,
-		Game:   NewGameClient(cfg),
+		ctx:      ctx,
+		config:   cfg,
+		Datafile: NewDatafileClient(cfg),
+		Game:     NewGameClient(cfg),
+		Header:   NewHeaderClient(cfg),
+		Release:  NewReleaseClient(cfg),
+		Rom:      NewRomClient(cfg),
 	}, nil
 }
 
@@ -87,15 +108,19 @@ func (c *Client) BeginTx(ctx context.Context, opts *sql.TxOptions) (*Tx, error) 
 	cfg := c.config
 	cfg.driver = &txDriver{tx: tx, drv: c.driver}
 	return &Tx{
-		config: cfg,
-		Game:   NewGameClient(cfg),
+		config:   cfg,
+		Datafile: NewDatafileClient(cfg),
+		Game:     NewGameClient(cfg),
+		Header:   NewHeaderClient(cfg),
+		Release:  NewReleaseClient(cfg),
+		Rom:      NewRomClient(cfg),
 	}, nil
 }
 
 // Debug returns a new debug-client. It's used to get verbose logging on specific operations.
 //
 //	client.Debug().
-//		Game.
+//		Datafile.
 //		Query().
 //		Count(ctx)
 //
@@ -118,7 +143,133 @@ func (c *Client) Close() error {
 // Use adds the mutation hooks to all the entity clients.
 // In order to add hooks to a specific client, call: `client.Node.Use(...)`.
 func (c *Client) Use(hooks ...Hook) {
+	c.Datafile.Use(hooks...)
 	c.Game.Use(hooks...)
+	c.Header.Use(hooks...)
+	c.Release.Use(hooks...)
+	c.Rom.Use(hooks...)
+}
+
+// DatafileClient is a client for the Datafile schema.
+type DatafileClient struct {
+	config
+}
+
+// NewDatafileClient returns a client for the Datafile from the given config.
+func NewDatafileClient(c config) *DatafileClient {
+	return &DatafileClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `datafile.Hooks(f(g(h())))`.
+func (c *DatafileClient) Use(hooks ...Hook) {
+	c.hooks.Datafile = append(c.hooks.Datafile, hooks...)
+}
+
+// Create returns a create builder for Datafile.
+func (c *DatafileClient) Create() *DatafileCreate {
+	mutation := newDatafileMutation(c.config, OpCreate)
+	return &DatafileCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of Datafile entities.
+func (c *DatafileClient) CreateBulk(builders ...*DatafileCreate) *DatafileCreateBulk {
+	return &DatafileCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for Datafile.
+func (c *DatafileClient) Update() *DatafileUpdate {
+	mutation := newDatafileMutation(c.config, OpUpdate)
+	return &DatafileUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *DatafileClient) UpdateOne(d *Datafile) *DatafileUpdateOne {
+	mutation := newDatafileMutation(c.config, OpUpdateOne, withDatafile(d))
+	return &DatafileUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *DatafileClient) UpdateOneID(id int) *DatafileUpdateOne {
+	mutation := newDatafileMutation(c.config, OpUpdateOne, withDatafileID(id))
+	return &DatafileUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for Datafile.
+func (c *DatafileClient) Delete() *DatafileDelete {
+	mutation := newDatafileMutation(c.config, OpDelete)
+	return &DatafileDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a delete builder for the given entity.
+func (c *DatafileClient) DeleteOne(d *Datafile) *DatafileDeleteOne {
+	return c.DeleteOneID(d.ID)
+}
+
+// DeleteOneID returns a delete builder for the given id.
+func (c *DatafileClient) DeleteOneID(id int) *DatafileDeleteOne {
+	builder := c.Delete().Where(datafile.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &DatafileDeleteOne{builder}
+}
+
+// Query returns a query builder for Datafile.
+func (c *DatafileClient) Query() *DatafileQuery {
+	return &DatafileQuery{
+		config: c.config,
+	}
+}
+
+// Get returns a Datafile entity by its id.
+func (c *DatafileClient) Get(ctx context.Context, id int) (*Datafile, error) {
+	return c.Query().Where(datafile.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *DatafileClient) GetX(ctx context.Context, id int) *Datafile {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryHeader queries the header edge of a Datafile.
+func (c *DatafileClient) QueryHeader(d *Datafile) *HeaderQuery {
+	query := &HeaderQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := d.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(datafile.Table, datafile.FieldID, id),
+			sqlgraph.To(header.Table, header.FieldID),
+			sqlgraph.Edge(sqlgraph.O2O, false, datafile.HeaderTable, datafile.HeaderColumn),
+		)
+		fromV = sqlgraph.Neighbors(d.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryGames queries the games edge of a Datafile.
+func (c *DatafileClient) QueryGames(d *Datafile) *GameQuery {
+	query := &GameQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := d.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(datafile.Table, datafile.FieldID, id),
+			sqlgraph.To(game.Table, game.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, datafile.GamesTable, datafile.GamesColumn),
+		)
+		fromV = sqlgraph.Neighbors(d.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *DatafileClient) Hooks() []Hook {
+	return c.hooks.Datafile
 }
 
 // GameClient is a client for the Game schema.
@@ -206,7 +357,373 @@ func (c *GameClient) GetX(ctx context.Context, id int) *Game {
 	return obj
 }
 
+// QueryDatafile queries the datafile edge of a Game.
+func (c *GameClient) QueryDatafile(ga *Game) *DatafileQuery {
+	query := &DatafileQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := ga.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(game.Table, game.FieldID, id),
+			sqlgraph.To(datafile.Table, datafile.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, game.DatafileTable, game.DatafileColumn),
+		)
+		fromV = sqlgraph.Neighbors(ga.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryReleases queries the releases edge of a Game.
+func (c *GameClient) QueryReleases(ga *Game) *ReleaseQuery {
+	query := &ReleaseQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := ga.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(game.Table, game.FieldID, id),
+			sqlgraph.To(release.Table, release.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, game.ReleasesTable, game.ReleasesColumn),
+		)
+		fromV = sqlgraph.Neighbors(ga.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryRom queries the rom edge of a Game.
+func (c *GameClient) QueryRom(ga *Game) *RomQuery {
+	query := &RomQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := ga.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(game.Table, game.FieldID, id),
+			sqlgraph.To(rom.Table, rom.FieldID),
+			sqlgraph.Edge(sqlgraph.O2O, false, game.RomTable, game.RomColumn),
+		)
+		fromV = sqlgraph.Neighbors(ga.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
 // Hooks returns the client hooks.
 func (c *GameClient) Hooks() []Hook {
 	return c.hooks.Game
+}
+
+// HeaderClient is a client for the Header schema.
+type HeaderClient struct {
+	config
+}
+
+// NewHeaderClient returns a client for the Header from the given config.
+func NewHeaderClient(c config) *HeaderClient {
+	return &HeaderClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `header.Hooks(f(g(h())))`.
+func (c *HeaderClient) Use(hooks ...Hook) {
+	c.hooks.Header = append(c.hooks.Header, hooks...)
+}
+
+// Create returns a create builder for Header.
+func (c *HeaderClient) Create() *HeaderCreate {
+	mutation := newHeaderMutation(c.config, OpCreate)
+	return &HeaderCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of Header entities.
+func (c *HeaderClient) CreateBulk(builders ...*HeaderCreate) *HeaderCreateBulk {
+	return &HeaderCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for Header.
+func (c *HeaderClient) Update() *HeaderUpdate {
+	mutation := newHeaderMutation(c.config, OpUpdate)
+	return &HeaderUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *HeaderClient) UpdateOne(h *Header) *HeaderUpdateOne {
+	mutation := newHeaderMutation(c.config, OpUpdateOne, withHeader(h))
+	return &HeaderUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *HeaderClient) UpdateOneID(id int) *HeaderUpdateOne {
+	mutation := newHeaderMutation(c.config, OpUpdateOne, withHeaderID(id))
+	return &HeaderUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for Header.
+func (c *HeaderClient) Delete() *HeaderDelete {
+	mutation := newHeaderMutation(c.config, OpDelete)
+	return &HeaderDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a delete builder for the given entity.
+func (c *HeaderClient) DeleteOne(h *Header) *HeaderDeleteOne {
+	return c.DeleteOneID(h.ID)
+}
+
+// DeleteOneID returns a delete builder for the given id.
+func (c *HeaderClient) DeleteOneID(id int) *HeaderDeleteOne {
+	builder := c.Delete().Where(header.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &HeaderDeleteOne{builder}
+}
+
+// Query returns a query builder for Header.
+func (c *HeaderClient) Query() *HeaderQuery {
+	return &HeaderQuery{
+		config: c.config,
+	}
+}
+
+// Get returns a Header entity by its id.
+func (c *HeaderClient) Get(ctx context.Context, id int) (*Header, error) {
+	return c.Query().Where(header.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *HeaderClient) GetX(ctx context.Context, id int) *Header {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryDatafile queries the datafile edge of a Header.
+func (c *HeaderClient) QueryDatafile(h *Header) *DatafileQuery {
+	query := &DatafileQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := h.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(header.Table, header.FieldID, id),
+			sqlgraph.To(datafile.Table, datafile.FieldID),
+			sqlgraph.Edge(sqlgraph.O2O, true, header.DatafileTable, header.DatafileColumn),
+		)
+		fromV = sqlgraph.Neighbors(h.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *HeaderClient) Hooks() []Hook {
+	return c.hooks.Header
+}
+
+// ReleaseClient is a client for the Release schema.
+type ReleaseClient struct {
+	config
+}
+
+// NewReleaseClient returns a client for the Release from the given config.
+func NewReleaseClient(c config) *ReleaseClient {
+	return &ReleaseClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `release.Hooks(f(g(h())))`.
+func (c *ReleaseClient) Use(hooks ...Hook) {
+	c.hooks.Release = append(c.hooks.Release, hooks...)
+}
+
+// Create returns a create builder for Release.
+func (c *ReleaseClient) Create() *ReleaseCreate {
+	mutation := newReleaseMutation(c.config, OpCreate)
+	return &ReleaseCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of Release entities.
+func (c *ReleaseClient) CreateBulk(builders ...*ReleaseCreate) *ReleaseCreateBulk {
+	return &ReleaseCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for Release.
+func (c *ReleaseClient) Update() *ReleaseUpdate {
+	mutation := newReleaseMutation(c.config, OpUpdate)
+	return &ReleaseUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *ReleaseClient) UpdateOne(r *Release) *ReleaseUpdateOne {
+	mutation := newReleaseMutation(c.config, OpUpdateOne, withRelease(r))
+	return &ReleaseUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *ReleaseClient) UpdateOneID(id int) *ReleaseUpdateOne {
+	mutation := newReleaseMutation(c.config, OpUpdateOne, withReleaseID(id))
+	return &ReleaseUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for Release.
+func (c *ReleaseClient) Delete() *ReleaseDelete {
+	mutation := newReleaseMutation(c.config, OpDelete)
+	return &ReleaseDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a delete builder for the given entity.
+func (c *ReleaseClient) DeleteOne(r *Release) *ReleaseDeleteOne {
+	return c.DeleteOneID(r.ID)
+}
+
+// DeleteOneID returns a delete builder for the given id.
+func (c *ReleaseClient) DeleteOneID(id int) *ReleaseDeleteOne {
+	builder := c.Delete().Where(release.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &ReleaseDeleteOne{builder}
+}
+
+// Query returns a query builder for Release.
+func (c *ReleaseClient) Query() *ReleaseQuery {
+	return &ReleaseQuery{
+		config: c.config,
+	}
+}
+
+// Get returns a Release entity by its id.
+func (c *ReleaseClient) Get(ctx context.Context, id int) (*Release, error) {
+	return c.Query().Where(release.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *ReleaseClient) GetX(ctx context.Context, id int) *Release {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryGame queries the game edge of a Release.
+func (c *ReleaseClient) QueryGame(r *Release) *GameQuery {
+	query := &GameQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := r.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(release.Table, release.FieldID, id),
+			sqlgraph.To(game.Table, game.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, release.GameTable, release.GameColumn),
+		)
+		fromV = sqlgraph.Neighbors(r.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *ReleaseClient) Hooks() []Hook {
+	return c.hooks.Release
+}
+
+// RomClient is a client for the Rom schema.
+type RomClient struct {
+	config
+}
+
+// NewRomClient returns a client for the Rom from the given config.
+func NewRomClient(c config) *RomClient {
+	return &RomClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `rom.Hooks(f(g(h())))`.
+func (c *RomClient) Use(hooks ...Hook) {
+	c.hooks.Rom = append(c.hooks.Rom, hooks...)
+}
+
+// Create returns a create builder for Rom.
+func (c *RomClient) Create() *RomCreate {
+	mutation := newRomMutation(c.config, OpCreate)
+	return &RomCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of Rom entities.
+func (c *RomClient) CreateBulk(builders ...*RomCreate) *RomCreateBulk {
+	return &RomCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for Rom.
+func (c *RomClient) Update() *RomUpdate {
+	mutation := newRomMutation(c.config, OpUpdate)
+	return &RomUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *RomClient) UpdateOne(r *Rom) *RomUpdateOne {
+	mutation := newRomMutation(c.config, OpUpdateOne, withRom(r))
+	return &RomUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *RomClient) UpdateOneID(id int) *RomUpdateOne {
+	mutation := newRomMutation(c.config, OpUpdateOne, withRomID(id))
+	return &RomUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for Rom.
+func (c *RomClient) Delete() *RomDelete {
+	mutation := newRomMutation(c.config, OpDelete)
+	return &RomDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a delete builder for the given entity.
+func (c *RomClient) DeleteOne(r *Rom) *RomDeleteOne {
+	return c.DeleteOneID(r.ID)
+}
+
+// DeleteOneID returns a delete builder for the given id.
+func (c *RomClient) DeleteOneID(id int) *RomDeleteOne {
+	builder := c.Delete().Where(rom.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &RomDeleteOne{builder}
+}
+
+// Query returns a query builder for Rom.
+func (c *RomClient) Query() *RomQuery {
+	return &RomQuery{
+		config: c.config,
+	}
+}
+
+// Get returns a Rom entity by its id.
+func (c *RomClient) Get(ctx context.Context, id int) (*Rom, error) {
+	return c.Query().Where(rom.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *RomClient) GetX(ctx context.Context, id int) *Rom {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryGame queries the game edge of a Rom.
+func (c *RomClient) QueryGame(r *Rom) *GameQuery {
+	query := &GameQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := r.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(rom.Table, rom.FieldID, id),
+			sqlgraph.To(game.Table, game.FieldID),
+			sqlgraph.Edge(sqlgraph.O2O, true, rom.GameTable, rom.GameColumn),
+		)
+		fromV = sqlgraph.Neighbors(r.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *RomClient) Hooks() []Hook {
+	return c.hooks.Rom
 }
