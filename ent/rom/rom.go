@@ -21,6 +21,8 @@ const (
 	FieldStatus = "status"
 	// EdgeGame holds the string denoting the game edge name in mutations.
 	EdgeGame = "game"
+	// EdgeFile holds the string denoting the file edge name in mutations.
+	EdgeFile = "file"
 	// Table holds the table name of the rom in the database.
 	Table = "roms"
 	// GameTable is the table the holds the game relation/edge.
@@ -30,6 +32,13 @@ const (
 	GameInverseTable = "games"
 	// GameColumn is the table column denoting the game relation/edge.
 	GameColumn = "game_rom"
+	// FileTable is the table the holds the file relation/edge.
+	FileTable = "files"
+	// FileInverseTable is the table name for the File entity.
+	// It exists in this package in order to avoid circular dependency with the "file" package.
+	FileInverseTable = "files"
+	// FileColumn is the table column denoting the file relation/edge.
+	FileColumn = "file_rom"
 )
 
 // Columns holds all SQL columns for rom fields.

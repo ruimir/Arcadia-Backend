@@ -10,6 +10,7 @@ import (
 	"Backend/ent/migrate"
 
 	"Backend/ent/datafile"
+	"Backend/ent/file"
 	"Backend/ent/game"
 	"Backend/ent/header"
 	"Backend/ent/release"
@@ -27,6 +28,8 @@ type Client struct {
 	Schema *migrate.Schema
 	// Datafile is the client for interacting with the Datafile builders.
 	Datafile *DatafileClient
+	// File is the client for interacting with the File builders.
+	File *FileClient
 	// Game is the client for interacting with the Game builders.
 	Game *GameClient
 	// Header is the client for interacting with the Header builders.
@@ -49,6 +52,7 @@ func NewClient(opts ...Option) *Client {
 func (c *Client) init() {
 	c.Schema = migrate.NewSchema(c.driver)
 	c.Datafile = NewDatafileClient(c.config)
+	c.File = NewFileClient(c.config)
 	c.Game = NewGameClient(c.config)
 	c.Header = NewHeaderClient(c.config)
 	c.Release = NewReleaseClient(c.config)
@@ -87,6 +91,7 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 		ctx:      ctx,
 		config:   cfg,
 		Datafile: NewDatafileClient(cfg),
+		File:     NewFileClient(cfg),
 		Game:     NewGameClient(cfg),
 		Header:   NewHeaderClient(cfg),
 		Release:  NewReleaseClient(cfg),
@@ -110,6 +115,7 @@ func (c *Client) BeginTx(ctx context.Context, opts *sql.TxOptions) (*Tx, error) 
 	return &Tx{
 		config:   cfg,
 		Datafile: NewDatafileClient(cfg),
+		File:     NewFileClient(cfg),
 		Game:     NewGameClient(cfg),
 		Header:   NewHeaderClient(cfg),
 		Release:  NewReleaseClient(cfg),
@@ -144,6 +150,7 @@ func (c *Client) Close() error {
 // In order to add hooks to a specific client, call: `client.Node.Use(...)`.
 func (c *Client) Use(hooks ...Hook) {
 	c.Datafile.Use(hooks...)
+	c.File.Use(hooks...)
 	c.Game.Use(hooks...)
 	c.Header.Use(hooks...)
 	c.Release.Use(hooks...)
@@ -270,6 +277,112 @@ func (c *DatafileClient) QueryGames(d *Datafile) *GameQuery {
 // Hooks returns the client hooks.
 func (c *DatafileClient) Hooks() []Hook {
 	return c.hooks.Datafile
+}
+
+// FileClient is a client for the File schema.
+type FileClient struct {
+	config
+}
+
+// NewFileClient returns a client for the File from the given config.
+func NewFileClient(c config) *FileClient {
+	return &FileClient{config: c}
+}
+
+// Use adds a list of mutation hooks to the hooks stack.
+// A call to `Use(f, g, h)` equals to `file.Hooks(f(g(h())))`.
+func (c *FileClient) Use(hooks ...Hook) {
+	c.hooks.File = append(c.hooks.File, hooks...)
+}
+
+// Create returns a create builder for File.
+func (c *FileClient) Create() *FileCreate {
+	mutation := newFileMutation(c.config, OpCreate)
+	return &FileCreate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// CreateBulk returns a builder for creating a bulk of File entities.
+func (c *FileClient) CreateBulk(builders ...*FileCreate) *FileCreateBulk {
+	return &FileCreateBulk{config: c.config, builders: builders}
+}
+
+// Update returns an update builder for File.
+func (c *FileClient) Update() *FileUpdate {
+	mutation := newFileMutation(c.config, OpUpdate)
+	return &FileUpdate{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOne returns an update builder for the given entity.
+func (c *FileClient) UpdateOne(f *File) *FileUpdateOne {
+	mutation := newFileMutation(c.config, OpUpdateOne, withFile(f))
+	return &FileUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// UpdateOneID returns an update builder for the given id.
+func (c *FileClient) UpdateOneID(id int) *FileUpdateOne {
+	mutation := newFileMutation(c.config, OpUpdateOne, withFileID(id))
+	return &FileUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// Delete returns a delete builder for File.
+func (c *FileClient) Delete() *FileDelete {
+	mutation := newFileMutation(c.config, OpDelete)
+	return &FileDelete{config: c.config, hooks: c.Hooks(), mutation: mutation}
+}
+
+// DeleteOne returns a delete builder for the given entity.
+func (c *FileClient) DeleteOne(f *File) *FileDeleteOne {
+	return c.DeleteOneID(f.ID)
+}
+
+// DeleteOneID returns a delete builder for the given id.
+func (c *FileClient) DeleteOneID(id int) *FileDeleteOne {
+	builder := c.Delete().Where(file.ID(id))
+	builder.mutation.id = &id
+	builder.mutation.op = OpDeleteOne
+	return &FileDeleteOne{builder}
+}
+
+// Query returns a query builder for File.
+func (c *FileClient) Query() *FileQuery {
+	return &FileQuery{
+		config: c.config,
+	}
+}
+
+// Get returns a File entity by its id.
+func (c *FileClient) Get(ctx context.Context, id int) (*File, error) {
+	return c.Query().Where(file.ID(id)).Only(ctx)
+}
+
+// GetX is like Get, but panics if an error occurs.
+func (c *FileClient) GetX(ctx context.Context, id int) *File {
+	obj, err := c.Get(ctx, id)
+	if err != nil {
+		panic(err)
+	}
+	return obj
+}
+
+// QueryRom queries the rom edge of a File.
+func (c *FileClient) QueryRom(f *File) *RomQuery {
+	query := &RomQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := f.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(file.Table, file.FieldID, id),
+			sqlgraph.To(rom.Table, rom.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, false, file.RomTable, file.RomColumn),
+		)
+		fromV = sqlgraph.Neighbors(f.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// Hooks returns the client hooks.
+func (c *FileClient) Hooks() []Hook {
+	return c.hooks.File
 }
 
 // GameClient is a client for the Game schema.
@@ -716,6 +829,22 @@ func (c *RomClient) QueryGame(r *Rom) *GameQuery {
 			sqlgraph.From(rom.Table, rom.FieldID, id),
 			sqlgraph.To(game.Table, game.FieldID),
 			sqlgraph.Edge(sqlgraph.O2O, true, rom.GameTable, rom.GameColumn),
+		)
+		fromV = sqlgraph.Neighbors(r.driver.Dialect(), step)
+		return fromV, nil
+	}
+	return query
+}
+
+// QueryFile queries the file edge of a Rom.
+func (c *RomClient) QueryFile(r *Rom) *FileQuery {
+	query := &FileQuery{config: c.config}
+	query.path = func(ctx context.Context) (fromV *sql.Selector, _ error) {
+		id := r.ID
+		step := sqlgraph.NewStep(
+			sqlgraph.From(rom.Table, rom.FieldID, id),
+			sqlgraph.To(file.Table, file.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, true, rom.FileTable, rom.FileColumn),
 		)
 		fromV = sqlgraph.Neighbors(r.driver.Dialect(), step)
 		return fromV, nil

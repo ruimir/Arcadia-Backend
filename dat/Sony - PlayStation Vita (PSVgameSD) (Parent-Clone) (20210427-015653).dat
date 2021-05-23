@@ -1,0 +1,1003 @@
+<?xml version="1.0"?>
+<!DOCTYPE datafile PUBLIC "-//Logiqx//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">
+<datafile>
+	<header>
+		<name>Sony - PlayStation Vita (PSVgameSD) (Parent-Clone)</name>
+		<description>Sony - PlayStation Vita (PSVgameSD) (Parent-Clone)</description>
+		<version>20210427-015653</version>
+		<date>20210427-015653</date>
+		<author>SonGoku</author>
+		<url>www.no-intro.org</url>
+	</header>
+	<game name="7'scarlet (USA)">
+		<description>7'scarlet (USA)</description>
+		<release name="7'scarlet (USA)" region="USA"/>
+		<rom name="7'scarlet (USA).psv" size="3791650816" crc="48f9c7f5" md5="23f610f55a57d721894787e1963dba77" sha1="373cf01cec7005e0097798d9d7894f7547b09629"/>
+	</game>
+	<game name="A.W. - Phoenix Festa (Asia) (En)">
+		<description>A.W. - Phoenix Festa (Asia) (En)</description>
+		<release name="A.W. - Phoenix Festa (Asia) (En)" region="ASI"/>
+		<rom name="A.W. - Phoenix Festa (Asia) (En).psv" size="1895825408" crc="ae77e53a" md5="78c6883a7290f70588e51ad04bd3d515" sha1="671d8912454f553f142bf3bad363d48d9c79b046"/>
+	</game>
+	<game name="Akiba's Trip - Undead &amp; Undressed (USA)">
+		<description>Akiba's Trip - Undead &amp; Undressed (USA)</description>
+		<release name="Akiba's Trip - Undead &amp; Undressed (USA)" region="USA"/>
+		<rom name="Akiba's Trip - Undead &amp; Undressed (USA).psv" size="3791650816" crc="7009c733" md5="e0b0d589c6f5d27167328d0717c56bcc" sha1="c6df0c50cd0a46851643db7e315f141a49f80ac0"/>
+	</game>
+	<game name="Amazing Spider-Man, The (USA)">
+		<description>Amazing Spider-Man, The (USA)</description>
+		<release name="Amazing Spider-Man, The (USA)" region="USA"/>
+		<rom name="Amazing Spider-Man, The (USA).psv" size="3791650816" crc="8414cdcd" md5="46563983f4dc64d507731b872c7f4cf1" sha1="1b0dec497004df070f1f268cf7b6e52ccac0a55b"/>
+	</game>
+	<game name="Angry Birds - Star Wars (Europe) (En,Fr,De,Es,It)">
+		<description>Angry Birds - Star Wars (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Angry Birds - Star Wars (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Angry Birds - Star Wars (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="c5e5079a" md5="9d528af2aa5d5a71f07828038739d95c" sha1="97070bcbb31a340d18b5f83d2b899d1ee3a5620c"/>
+	</game>
+	<game name="Arcana Heart 3 - Love Max!!!!! (USA)">
+		<description>Arcana Heart 3 - Love Max!!!!! (USA)</description>
+		<release name="Arcana Heart 3 - Love Max!!!!! (USA)" region="USA"/>
+		<rom name="Arcana Heart 3 - Love Max!!!!! (USA).psv" size="3791650816" crc="cb1dae33" md5="a84047c01f00d1a7a3a4ca19894b8492" sha1="07e6f90d0f1587d4d1d87fc8808768037b606547"/>
+	</game>
+	<game name="Arcana Heart 3 - LOVEMAX!!!!! (Europe)">
+		<description>Arcana Heart 3 - LOVEMAX!!!!! (Europe)</description>
+		<release name="Arcana Heart 3 - LOVEMAX!!!!! (Europe)" region="EUR"/>
+		<rom name="Arcana Heart 3 - LOVEMAX!!!!! (Europe).psv" size="3791650816" crc="208176ed" md5="85c1ea25cb4c5e5fdd3d2142771855a9" sha1="be7280f8baaeba44ea9c19e603d83e464a14453b"/>
+	</game>
+	<game name="Army Corps of Hell (Europe) (En,Fr,De,Es,It)">
+		<description>Army Corps of Hell (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Army Corps of Hell (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Army Corps of Hell (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="04a3cff0" md5="483e940fb3a4947ced51a92c2247830c" sha1="1f0f6ae201bb4f28ed4bb122a1ea8c8e9c7496b7"/>
+	</game>
+	<game name="Assassin's Creed III - Liberation (Europe) (En,Fr,De,Es,It,Nl,Ru)">
+		<description>Assassin's Creed III - Liberation (Europe) (En,Fr,De,Es,It,Nl,Ru)</description>
+		<release name="Assassin's Creed III - Liberation (Europe) (En,Fr,De,Es,It,Nl,Ru)" region="EUR"/>
+		<rom name="0086 - Assassin's Creed III - Liberation (Europe) (En,Fr,De,Es,It,Nl,Ru).psv" size="3791650816" crc="b235471b" md5="5020a6fa45928ab3d8b80020e24f75d7" sha1="0823c98299ba0eccd990f291309d68c72574f7f1" status="verified"/>
+	</game>
+	<game name="Assassin's Creed III - Liberation (USA)">
+		<description>Assassin's Creed III - Liberation (USA)</description>
+		<release name="Assassin's Creed III - Liberation (USA)" region="USA"/>
+		<rom name="Assassin's Creed III - Liberation (USA).psv" size="3791650816" crc="06fed7b3" md5="fbbcc7d6342bae09338e06bbeec829f0" sha1="2a33a3b0426ba915f0bb01da6970041bf871e163"/>
+	</game>
+	<game name="Atelier Escha &amp; Logy Plus ~ Alchemists of the Dusk Sky ~ (USA)">
+		<description>Atelier Escha &amp; Logy Plus ~ Alchemists of the Dusk Sky ~ (USA)</description>
+		<release name="Atelier Escha &amp; Logy Plus ~ Alchemists of the Dusk Sky ~ (USA)" region="USA"/>
+		<rom name="Atelier Escha &amp; Logy Plus ~ Alchemists of the Dusk Sky ~ (USA).psv" size="3791650816" crc="47e4e944" md5="a682e3e0c116d8a7591dc5572a3bd03c" sha1="cedb1e5d7622fa40fd489242b703188d0cb6220f"/>
+	</game>
+	<game name="Blue Reflection (Japan)">
+		<description>Blue Reflection (Japan)</description>
+		<release name="Blue Reflection (Japan)" region="JPN"/>
+		<rom name="Blue Reflection (Japan).psv" size="3791650816" crc="593e9734" md5="7d80449f0972c9e4c0075ea5285f1a60" sha1="eb13e886c6778d8742318fed1fdeea215192198d"/>
+	</game>
+	<game name="Borderlands 2 (USA)">
+		<description>Borderlands 2 (USA)</description>
+		<release name="Borderlands 2 (USA)" region="USA"/>
+		<rom name="Borderlands 2 (USA).psv" size="3791650816" crc="36988f57" md5="da61d2b1bf3dba08d4f0565c57115fbc" sha1="08ff7d07213b853c4b1281a9bf7846ce38558bd9"/>
+	</game>
+	<game name="Chao Ku Jiepai - Yinsu (China)">
+		<description>Chao Ku Jiepai - Yinsu (China)</description>
+		<release name="Chao Ku Jiepai - Yinsu (China)" region="CHN"/>
+		<rom name="Chao Ku Jiepai - Yinsu (China).psv" size="3791650816" crc="42d130c8" md5="075bbffb86a58e71d7e047bebf13e6e0" sha1="8adde5426994b28682307fdb8940c8599b11dc51"/>
+	</game>
+	<game name="Child of Light - Deluxe Edition (Asia) (En,Ja,Zh-Hant)">
+		<description>Child of Light - Deluxe Edition (Asia) (En,Ja,Zh-Hant)</description>
+		<release name="Child of Light - Deluxe Edition (Asia) (En,Ja,Zh-Hant)" region="ASI"/>
+		<rom name="Child of Light - Deluxe Edition (Asia) (En,Ja,Zh-Hant).psv" size="1895825408" crc="d5f84b88" md5="f8c18178e4e585c9efd8d86789fd1cf5" sha1="94e099fe5a981d5e71950d2b265d7309f4d08749"/>
+	</game>
+	<game name="Code - Realize - ~Future Blessings~ (USA)">
+		<description>Code - Realize - ~Future Blessings~ (USA)</description>
+		<release name="Code - Realize - ~Future Blessings~ (USA)" region="USA"/>
+		<rom name="Code - Realize - ~Future Blessings~ (USA).psv" size="3791650816" crc="5cb65d49" md5="cbc608f0c5a859a57fd6957f5c11d159" sha1="ae46a30ca99ec3622ac4ab0f3c66b39afe9c214a"/>
+	</game>
+	<game name="Collar x Malice (USA)">
+		<description>Collar x Malice (USA)</description>
+		<release name="Collar x Malice (USA)" region="USA"/>
+		<rom name="Collar x Malice (USA).psv" size="3791650816" crc="2d169048" md5="beb50f8d9c9740ee9fb69353825756ee" sha1="a1d130128d73d8f039c66d9557cd1b4ca4dd0042"/>
+	</game>
+	<game name="Conception II - Children of the Seven Stars (USA)">
+		<description>Conception II - Children of the Seven Stars (USA)</description>
+		<release name="Conception II - Children of the Seven Stars (USA)" region="USA"/>
+		<rom name="Conception II - Children of the Seven Stars (USA).psv" size="1895825408" crc="b868f739" md5="61ce84c2490434718816252f36e9da53" sha1="d68e68157eb1ee699d5d6558c8a5ab29134dd48f"/>
+	</game>
+	<game name="Corpse Party - Blood Drive (Korea)">
+		<description>Corpse Party - Blood Drive (Korea)</description>
+		<release name="Corpse Party - Blood Drive (Korea)" region="KOR"/>
+		<rom name="Corpse Party - Blood Drive (Korea).psv" size="3791650816" crc="58a2fee7" md5="831dd38b275fe280c0ec784f2615282e" sha1="71fc20971cd66cf7f3a6d4635ce26d5f2216645d"/>
+	</game>
+	<game name="Criminal Girls - Invite Only (USA)">
+		<description>Criminal Girls - Invite Only (USA)</description>
+		<release name="Criminal Girls - Invite Only (USA)" region="USA"/>
+		<rom name="Criminal Girls - Invite Only (USA).psv" size="1895825408" crc="748e47dc" md5="adc0c28aa533556b156ac2c03bb9a7e2" sha1="53dcfc57fe08951f08877c67561309e884b836ef"/>
+	</game>
+	<game name="Danganronpa - Trigger Happy Havoc (USA)">
+		<description>Danganronpa - Trigger Happy Havoc (USA)</description>
+		<release name="Danganronpa - Trigger Happy Havoc (USA)" region="USA"/>
+		<rom name="Danganronpa - Trigger Happy Havoc (USA).psv" size="1895825408" crc="5af621a2" md5="0b65464dd14e713a88077b7ef145b790" sha1="44a625666c9e8cad4b9ea64036d7ab0d61276795"/>
+	</game>
+	<game name="Danganronpa 2 - Goodbye Despair (USA)">
+		<description>Danganronpa 2 - Goodbye Despair (USA)</description>
+		<release name="Danganronpa 2 - Goodbye Despair (USA)" region="USA"/>
+		<rom name="Danganronpa 2 - Goodbye Despair (USA).psv" size="1895825408" crc="00231fae" md5="793fb3413508a02fb7df9f4f6b9ed6ac" sha1="e69a86086ed5510d69c6e4080ea109c16e64419c"/>
+	</game>
+	<game name="Danganronpa Another Episode - Ultra Despair Girls (USA)">
+		<description>Danganronpa Another Episode - Ultra Despair Girls (USA)</description>
+		<release name="Danganronpa Another Episode - Ultra Despair Girls (USA)" region="USA"/>
+		<rom name="Danganronpa Another Episode - Ultra Despair Girls (USA).psv" size="3791650816" crc="55c60fc7" md5="91fecabbabc5ff922d700c10d5d32238" sha1="ba056d4315bcab6df4a1cade71d3034e78058bae"/>
+	</game>
+	<game name="Dead or Alive 5 Plus (USA)">
+		<description>Dead or Alive 5 Plus (USA)</description>
+		<release name="Dead or Alive 5 Plus (USA)" region="USA"/>
+		<rom name="Dead or Alive 5 Plus (USA).psv" size="3791650816" crc="b6a1c85f" md5="3216c8636ff2f18f060dce692e1ae3f0" sha1="1bd116f54ceb8d53444d193a5f656dc9308be48c"/>
+	</game>
+	<game name="Death Mark (USA)">
+		<description>Death Mark (USA)</description>
+		<release name="Death Mark (USA)" region="USA"/>
+		<rom name="Death Mark (USA).psv" size="1895825408" crc="b133b890" md5="cab189df2ab2ac426c5a9269c3a50683" sha1="6e8cc856cb3d1a90a4a4eabdaa02af67011aca04"/>
+	</game>
+	<game name="Demon Gaze (USA)">
+		<description>Demon Gaze (USA)</description>
+		<release name="Demon Gaze (USA)" region="USA"/>
+		<rom name="Demon Gaze (USA).psv" size="1895825408" crc="06b47da1" md5="6bf1cfc3a971b54d451adc82f107970d" sha1="1a09fbc29c78ef7f23641cbaaef9706a18c65d29"/>
+	</game>
+	<game name="Demon Gaze II (USA)">
+		<description>Demon Gaze II (USA)</description>
+		<release name="Demon Gaze II (USA)" region="USA"/>
+		<rom name="Demon Gaze II (USA).psv" size="1895825408" crc="6260a357" md5="2028fb6aafb5832accd2b4441a2740af" sha1="fe2a11805b524620e1e557a1acf2fcfe77de4803"/>
+	</game>
+	<game name="Diabolik Lovers - Dark Fate (Japan)">
+		<description>Diabolik Lovers - Dark Fate (Japan)</description>
+		<release name="Diabolik Lovers - Dark Fate (Japan)" region="JPN"/>
+		<rom name="Diabolik Lovers - Dark Fate (Japan).psv" size="3791650816" crc="7204abc8" md5="8858562aeb1907ed445ecceef7bd6262" sha1="da4c1db468c2e41cef908a36fd2e2c498a54f589"/>
+	</game>
+	<game name="Diabolik Lovers - Limited V Edition (Japan)">
+		<description>Diabolik Lovers - Limited V Edition (Japan)</description>
+		<release name="Diabolik Lovers - Limited V Edition (Japan)" region="JPN"/>
+		<rom name="Diabolik Lovers - Limited V Edition (Japan).psv" size="3791650816" crc="3fceffe8" md5="d0d343e2163dfbd734f2883c60dfbdf5" sha1="6ceba6897e6f884f4b077fc9895c6dab4a68aaf4"/>
+	</game>
+	<game name="Digimon Story Cyber Sleuth - Hacker's Memory (Asia) (En)">
+		<description>Digimon Story Cyber Sleuth - Hacker's Memory (Asia) (En)</description>
+		<release name="Digimon Story Cyber Sleuth - Hacker's Memory (Asia) (En)" region="ASI"/>
+		<rom name="Digimon Story Cyber Sleuth - Hacker's Memory (Asia) (En).psv" size="3791650816" crc="e895da65" md5="1f489a60ec85c1bf3fc421b74417131d" sha1="1157160289a10dc437e8302b16a5b73dc3982139"/>
+	</game>
+	<game name="Digimon World -next 0rder- (Japan)">
+		<description>Digimon World -next 0rder- (Japan)</description>
+		<release name="Digimon World -next 0rder- (Japan)" region="JPN"/>
+		<rom name="Digimon World -next 0rder- (Japan).psv" size="1895825408" crc="4fd54637" md5="002fc3b473074d37322849db181fb2b8" sha1="4bdd1871c1e9cbc26fe4034e4c3a3a8c327f04a7"/>
+	</game>
+	<game name="Disgaea 3 - Absence of Detention (USA) (En,Ja)">
+		<description>Disgaea 3 - Absence of Detention (USA) (En,Ja)</description>
+		<release name="Disgaea 3 - Absence of Detention (USA) (En,Ja)" region="USA"/>
+		<rom name="Disgaea 3 - Absence of Detention (USA) (En,Ja).vpk" size="3791650816" crc="0f9c3ea1" md5="6f5566899b280d7eb78c52fbcab72878" sha1="bf4956112bb89af2c4ddc8474d5a802b080d5997"/>
+	</game>
+	<game name="Disgaea 4 - A Promise Revisited (USA) (En,Ja)">
+		<description>Disgaea 4 - A Promise Revisited (USA) (En,Ja)</description>
+		<release name="Disgaea 4 - A Promise Revisited (USA) (En,Ja)" region="USA"/>
+		<rom name="Disgaea 4 - A Promise Revisited (USA) (En,Ja).psv" size="3791650816" crc="62c5d8f1" md5="ee98e93307778e208ba80f45831dcf96" sha1="12b2db16baf1be6e95d8ed57c6630687b72926e0"/>
+	</game>
+	<game name="Disgaea 4 - A Promise Revisited (Europe)">
+		<description>Disgaea 4 - A Promise Revisited (Europe)</description>
+		<release name="Disgaea 4 - A Promise Revisited (Europe)" region="EUR"/>
+		<rom name="Disgaea 4 - A Promise Revisited (Europe).psv" size="3791650816" crc="721285cb" md5="08175ee0154c8d55ae444e84c74bf538" sha1="7e9ec612f49de5cf2ffe27553051b1bb68299f78"/>
+	</game>
+	<game name="DJMax Technika Tune (Japan)">
+		<description>DJMax Technika Tune (Japan)</description>
+		<release name="DJMax Technika Tune (Japan)" region="JPN"/>
+		<rom name="DJMax Technika Tune (Japan).psv" size="3791650816" crc="d14f370b" md5="9aec69dd05b56650e0ec9c5cf2b7148d" sha1="75e3bf6fd551e4a0f8e3302ad52cc478d0d9db32"/>
+	</game>
+	<game name="Dragon Quest Builders (Asia) (En)">
+		<description>Dragon Quest Builders (Asia) (En)</description>
+		<release name="Dragon Quest Builders (Asia) (En)" region="ASI"/>
+		<rom name="Dragon Quest Builders (Asia) (En).psv" size="1895825408" crc="0a63ae6e" md5="bbb684ec7c9b4881f8b9d43654b266fa" sha1="e3caa97cef9ea258523a9a122f193ac6cf0b8444"/>
+	</game>
+	<game name="Dragon's Crown (USA)">
+		<description>Dragon's Crown (USA)</description>
+		<release name="Dragon's Crown (USA)" region="USA"/>
+		<rom name="Dragon's Crown (USA).psv" size="1895825408" crc="9d7b2125" md5="148512e328af875716d005d09131e081" sha1="3a3ce16976391d52f871aaa0bfef57c56c6ca76b"/>
+	</game>
+	<game name="Dungeon Hunter - Alliance (USA)">
+		<description>Dungeon Hunter - Alliance (USA)</description>
+		<release name="Dungeon Hunter - Alliance (USA)" region="USA"/>
+		<rom name="Dungeon Hunter - Alliance (USA).psv" size="1895825408" crc="9d8341da" md5="688d685e5665e299a7859361c0fd0a38" sha1="f652d0684d1e32213794af2fa52b0eee0c84eb16"/>
+	</game>
+	<game name="Dungeon Travelers 2 - The Royal Library &amp; The Monster Seal (USA)">
+		<description>Dungeon Travelers 2 - The Royal Library &amp; The Monster Seal (USA)</description>
+		<release name="Dungeon Travelers 2 - The Royal Library &amp; The Monster Seal (USA)" region="USA"/>
+		<rom name="Dungeon Travelers 2 - The Royal Library &amp; The Monster Seal (USA).psv" size="3791650816" crc="957bf208" md5="9c3339863fa28094fd06438745d16ec9" sha1="a1a5eaa5835caf0ba750b40a6c88d911f3127d3b"/>
+	</game>
+	<game name="Dynasty Warriors 8 - Empires (Asia) (En)">
+		<description>Dynasty Warriors 8 - Empires (Asia) (En)</description>
+		<release name="Dynasty Warriors 8 - Empires (Asia) (En)" region="ASI"/>
+		<rom name="Dynasty Warriors 8 - Empires (Asia) (En).psv" size="3791650816" crc="873ca4a2" md5="d808bf1271b697f486e1e761fab56dd6" sha1="7426213829a46b95a0bd00884c80ecc5b96badd0"/>
+	</game>
+	<game name="Earth Defense Force 2 - Invaders From Planet Space (Europe)">
+		<description>Earth Defense Force 2 - Invaders From Planet Space (Europe)</description>
+		<release name="Earth Defense Force 2 - Invaders From Planet Space (Europe)" region="EUR"/>
+		<rom name="Earth Defense Force 2 - Invaders From Planet Space (Europe).psv" size="1895825408" crc="dbd23028" md5="7c0894f17bd4c068c8e71a6bcd48382d" sha1="3df79ce9a22995143cf22ce7d7f782ae50020962"/>
+	</game>
+	<game name="Everybody's Golf (Europe) (En,Fr,De,It)">
+		<description>Everybody's Golf (Europe) (En,Fr,De,It)</description>
+		<release name="Everybody's Golf (Europe) (En,Fr,De,It)" region="EUR"/>
+		<rom name="Everybody's Golf (Europe) (En,Fr,De,It).psv" size="1895825408" crc="a20b07ae" md5="31f156f72cf5796de745e6c4d8e8ebbf" sha1="5f5a8fe8c4373cf23d8d3866143ae82db8735a5b"/>
+	</game>
+	<game name="F1 2011 (Europe) (En,Fr,De,Es,It,Pt,Sv,Fi)">
+		<description>F1 2011 (Europe) (En,Fr,De,Es,It,Pt,Sv,Fi)</description>
+		<release name="F1 2011 (Europe) (En,Fr,De,Es,It,Pt,Sv,Fi)" region="EUR"/>
+		<rom name="F1 2011 (Europe) (En,Fr,De,Es,It,Pt,Sv,Fi).psv" size="1895825408" crc="0230a4a1" md5="6da8a59b13dd18e47bc42558ca103a06" sha1="e74d5fc37011d3901b0d459a6290e0339acb4e98"/>
+	</game>
+	<game name="Farming Simulator 14 (Europe) (En,Fr,De,Es,It,Pt,Ru)">
+		<description>Farming Simulator 14 (Europe) (En,Fr,De,Es,It,Pt,Ru)</description>
+		<release name="Farming Simulator 14 (Europe) (En,Fr,De,Es,It,Pt,Ru)" region="EUR"/>
+		<rom name="Farming Simulator 14 (Europe) (En,Fr,De,Es,It,Pt,Ru).psv" size="1895825408" crc="64152007" md5="82003ec3bf3354350fc8750117a1d7a3" sha1="dbfaa63bad3da37cc78b1571d593e7ba51451022"/>
+	</game>
+	<game name="Farming Simulator 18 (USA)">
+		<description>Farming Simulator 18 (USA)</description>
+		<release name="Farming Simulator 18 (USA)" region="USA"/>
+		<rom name="Farming Simulator 18 (USA).psv" size="1895825408" crc="de4d6ec3" md5="8ef35f70850bee0d43af5716ba8f11ef" sha1="501068f936c6bf6a7c1c54e4b053bc4b870ca2c6"/>
+	</game>
+	<game name="Fate-EXTELLA (Japan)">
+		<description>Fate-EXTELLA (Japan)</description>
+		<release name="Fate-EXTELLA (Japan)" region="JPN"/>
+		<rom name="Fate-EXTELLA (Japan).psv" size="1895825408" crc="8e1c7f12" md5="40ae8ea7992d6ce9d71f73a1d0914830" sha1="5c9b8af82bfc0452992df38b3000602387ebc98b"/>
+	</game>
+	<game name="Fifa 13 (Spain)">
+		<description>Fifa 13 (Spain)</description>
+		<release name="Fifa 13 (Spain)" region="SPA"/>
+		<rom name="Fifa 13 (Spain).psv" size="3791650816" crc="e5b5c772" md5="68f6ebf95a476bbf1e91f95b588ea4e0" sha1="a923b23a646a7cfcd425237b5d827aaaa4876da8"/>
+	</game>
+	<game name="Fifa 14 (Spain)">
+		<description>Fifa 14 (Spain)</description>
+		<release name="Fifa 14 (Spain)" region="SPA"/>
+		<rom name="Fifa 14 (Spain).psv" size="3791650816" crc="8e2c591c" md5="93a3ee3b67865ff1275afc938230181e" sha1="2928c6cc09c2a34e3f9da275ab4337573c6e8e97"/>
+	</game>
+	<game name="FIFA 14 (USA)">
+		<description>FIFA 14 (USA)</description>
+		<release name="FIFA 14 (USA)" region="USA"/>
+		<rom name="FIFA 14 (USA).psv" size="3791650816" crc="da8e9f72" md5="7317818156ed36169b5671be6bfb4279" sha1="44a69b21efc7c5e16e4b2c3eabd58c34cedafd3a"/>
+	</game>
+	<game name="Fifa 15 (Spain)">
+		<description>Fifa 15 (Spain)</description>
+		<release name="Fifa 15 (Spain)" region="SPA"/>
+		<rom name="Fifa 15 (Spain).psv" size="3791650816" crc="dd314beb" md5="e17cf1b3e0ba225aabe6db6c14f05558" sha1="5fbdb6706ef23bf0ab6f9744090c7990e840b143"/>
+	</game>
+	<game name="Fifa Football (Spain) [b]">
+		<description>Fifa Football (Spain) [b]</description>
+		<release name="Fifa Football (Spain) [b]" region="SPA"/>
+		<rom name="Fifa Football (Spain) [b].psv" size="3791650816" crc="d61bd99c" md5="26cc2867b06d9829ba0687c17e2a054b" sha1="52b76c3e6852bc474dc4d16cc908474ce72ce1f8" status="baddump"/>
+	</game>
+	<game name="Final Fantasy X X-2 HD Remaster (USA)">
+		<description>Final Fantasy X X-2 HD Remaster (USA)</description>
+		<release name="Final Fantasy X X-2 HD Remaster (USA)" region="USA"/>
+		<rom name="Final Fantasy X X-2 HD Remaster (USA).psv" size="3791650816" crc="e52dbb77" md5="fbdce8bf4aa7e7760b63881712d6b629" sha1="36e7c3ab9357efb611c65104440d4e138e9ac6f9"/>
+	</game>
+	<game name="Football Manager Classic 2014 (Europe) (En,Fr,Es,It,Nl,Pt,Sv,No,Da,Pl,Ru,Tr)">
+		<description>Football Manager Classic 2014 (Europe) (En,Fr,Es,It,Nl,Pt,Sv,No,Da,Pl,Ru,Tr)</description>
+		<release name="Football Manager Classic 2014 (Europe) (En,Fr,Es,It,Nl,Pt,Sv,No,Da,Pl,Ru,Tr)" region="EUR"/>
+		<rom name="Football Manager Classic 2014 (Europe) (En,Fr,Es,It,Nl,Pt,Sv,No,Da,Pl,Ru,Tr).psv" size="3791650816" crc="eb47c7af" md5="e74531e662992b9f0412a2fb67c99510" sha1="1ced9df6f752a25ba34f68c49f3213d44c3f7a09" status="verified"/>
+	</game>
+	<game name="Freedom Wars (USA)">
+		<description>Freedom Wars (USA)</description>
+		<release name="Freedom Wars (USA)" region="USA"/>
+		<rom name="Freedom Wars (USA).psv" size="1895825408" crc="54fb552c" md5="5c52c81e4da090424935529d32e5ca20" sha1="6c0628d7b6cb6004941e4b84a08cd6bcabcfdcbe"/>
+	</game>
+	<game name="God Eater - Resurrection (Japan)">
+		<description>God Eater - Resurrection (Japan)</description>
+		<release name="God Eater - Resurrection (Japan)" region="JPN"/>
+		<rom name="God Eater - Resurrection (Japan).psv" size="3791650816" crc="b80b09ec" md5="b7cee6dac25bc5237c2b2e48472eaf00" sha1="bf3778bf4a1cb46f25f8e91b1765e62510f46d5c"/>
+	</game>
+	<game name="God Eater 2 (Japan)">
+		<description>God Eater 2 (Japan)</description>
+		<release name="God Eater 2 (Japan)" region="JPN"/>
+		<rom name="God Eater 2 (Japan).psv" size="3791650816" crc="6e69a432" md5="65b3a77ec6b353b4f78e03cbf963d47d" sha1="6c392f6e13ff49a4c8114458a1abeb619ae4b3a1"/>
+	</game>
+	<game name="God Eater 2 - Rage Burst (Japan)">
+		<description>God Eater 2 - Rage Burst (Japan)</description>
+		<release name="God Eater 2 - Rage Burst (Japan)" region="JPN"/>
+		<rom name="God Eater 2 - Rage Burst (Japan).psv" size="3791650816" crc="64aa5c82" md5="fcde427d4d9e3ca754fa9c0569325281" sha1="bfb5a2982a9afdfb5772c0d84be5a8a361463208"/>
+	</game>
+	<game name="God of War Collection (USA)">
+		<description>God of War Collection (USA)</description>
+		<release name="God of War Collection (USA)" region="USA"/>
+		<rom name="God of War Collection (USA).psv" size="3791650816" crc="9e70d16e" md5="b9f77a3672fa2d8af662f6c537452d48" sha1="c65a75c89d1ec845d2b6c7bb599212092876f771"/>
+	</game>
+	<game name="Goes! (Japan)">
+		<description>Goes! (Japan)</description>
+		<release name="Goes! (Japan)" region="JPN"/>
+		<rom name="Goes! (Japan).psv" size="3791650816" crc="84eeba63" md5="64e4d1d2f98044384ac43bc4db046ebb" sha1="25e934a9bd46bd9caef085850bfa9db52d5b7fb9"/>
+	</game>
+	<game name="Gravity Rush (USA)">
+		<description>Gravity Rush (USA)</description>
+		<release name="Gravity Rush (USA)" region="USA"/>
+		<rom name="Gravity Rush (USA).psv" size="1895825408" crc="0bd68a3f" md5="a2a68d4b6e69b9343323ca4adc6c0f96" sha1="df2a6c135fe0159803e91e8dfa5d2e922952c6db"/>
+	</game>
+	<game name="Gravity Rush (Europe)">
+		<description>Gravity Rush (Europe)</description>
+		<release name="Gravity Rush (Europe)" region="EUR"/>
+		<rom name="Gravity Rush (Europe).psv" size="1895825408" crc="48a1fbb3" md5="d17043dddc3bfc334e30b594bebb8b80" sha1="85ff1f70960f0fbbdd7328b72d58ac1f7b03c3a5" status="verified"/>
+	</game>
+	<game name="Gundam Breaker 3 - Break Edition (Asia) (En)">
+		<description>Gundam Breaker 3 - Break Edition (Asia) (En)</description>
+		<release name="Gundam Breaker 3 - Break Edition (Asia) (En)" region="ASI"/>
+		<rom name="Gundam Breaker 3 - Break Edition (Asia) (En).psv" size="3791650816" crc="f7b87dd7" md5="3503a99fd2edcefa142c705b71334d41" sha1="1444238a1d66795a2b5fa525f2c4c46570bea400"/>
+	</game>
+	<game name="Hakuouki Reimeiroku - Omohasezora (Japan)">
+		<description>Hakuouki Reimeiroku - Omohasezora (Japan)</description>
+		<release name="Hakuouki Reimeiroku - Omohasezora (Japan)" region="JPN"/>
+		<rom name="Hakuouki Reimeiroku - Omohasezora (Japan).psv" size="3791650816" crc="a392543f" md5="46ab9e737f69ebffe70ced0cb623785b" sha1="441cd08fe4d364617a61d88b0829b8593ed123fa"/>
+	</game>
+	<game name="Hatsune Miku - Project Diva f (Japan)">
+		<description>Hatsune Miku - Project Diva f (Japan)</description>
+		<release name="Hatsune Miku - Project Diva f (Japan)" region="JPN"/>
+		<rom name="Hatsune Miku - Project Diva f (Japan).psv" size="3791650816" crc="2717a9e0" md5="6c2b06ec6e5f43c703c71e4ed8babd13" sha1="70011af8d246fd9fd33800afdb1cefe5987cee3c" status="verified"/>
+	</game>
+	<game name="Hatsune Miku - Project Diva F 2nd (USA)">
+		<description>Hatsune Miku - Project Diva F 2nd (USA)</description>
+		<release name="Hatsune Miku - Project Diva F 2nd (USA)" region="USA"/>
+		<rom name="Hatsune Miku - Project Diva F 2nd (USA).psv" size="3791650816" crc="69dec19b" md5="5e26f016769fe5f6965a2e61da8adad6" sha1="21d210944a16b3ba51d59a946d286a62c1001401" status="verified"/>
+	</game>
+	<game name="Hatsune Miku - Project Diva F 2nd (Japan)">
+		<description>Hatsune Miku - Project Diva F 2nd (Japan)</description>
+		<release name="Hatsune Miku - Project Diva F 2nd (Japan)" region="JPN"/>
+		<rom name="Hatsune Miku - Project Diva F 2nd (Japan).psv" size="3791650816" crc="111940ff" md5="9b7f34893e2b456c3aa88e160f0a78ed" sha1="ea342b705fe8945c6da90c27bb0ccfcac0a023f6" status="verified"/>
+	</game>
+	<game name="Hatsune Miku - Project DIVA X (USA)">
+		<description>Hatsune Miku - Project DIVA X (USA)</description>
+		<release name="Hatsune Miku - Project DIVA X (USA)" region="USA"/>
+		<rom name="Hatsune Miku - Project DIVA X (USA).psv" size="3791650816" crc="afe05b58" md5="56558ee607fce5b5ed41043852e6cec8" sha1="4646260909d82b9d63c62671ece30212be203730"/>
+	</game>
+	<game name="Hatsune Miku - Project Diva X (Japan)">
+		<description>Hatsune Miku - Project Diva X (Japan)</description>
+		<release name="Hatsune Miku - Project Diva X (Japan)" region="JPN"/>
+		<rom name="Hatsune Miku - Project Diva X (Japan).psv" size="3791650816" crc="c0386a1b" md5="270cbe6aa622182f138e41bcf44e4a20" sha1="2e1323296409884192384f85ad27bb03c737a7ce"/>
+	</game>
+	<game name="Hotline Miami - Collected Edition (Japan)">
+		<description>Hotline Miami - Collected Edition (Japan)</description>
+		<release name="Hotline Miami - Collected Edition (Japan)" region="JPN"/>
+		<rom name="Hotline Miami - Collected Edition (Japan).psv" size="1895825408" crc="2143aef6" md5="3f2390df347aae1eb302f21f7ba03b76" sha1="61dd280f80aa45235fe7ea528559c4c721ccf00e"/>
+	</game>
+	<game name="Hyperdevotion Noire - Goddess Black Heart (USA)">
+		<description>Hyperdevotion Noire - Goddess Black Heart (USA)</description>
+		<release name="Hyperdevotion Noire - Goddess Black Heart (USA)" region="USA"/>
+		<rom name="Hyperdevotion Noire - Goddess Black Heart (USA).psv" size="1895825408" crc="b94db791" md5="2618b55a9c58cb07dd06d234d7fa9536" sha1="58f1d4a6a66e85aa05ad23c7c6e3982e1e806348"/>
+	</game>
+	<game name="Hyperdevotion Noire Goddess Black Heart (Japan)">
+		<description>Hyperdevotion Noire Goddess Black Heart (Japan)</description>
+		<release name="Hyperdevotion Noire Goddess Black Heart (Japan)" region="JPN"/>
+		<rom name="Hyperdevotion Noire Goddess Black Heart (Japan).psv" size="1895825408" crc="b5d75d97" md5="fcaf56c2360c6a78e0ccb8945a074686" sha1="f9f1963f292bd428316f16eba99d9bb1fad965cc"/>
+	</game>
+	<game name="Hyperdimension Neptunia PP - Producing Perfection (USA)">
+		<description>Hyperdimension Neptunia PP - Producing Perfection (USA)</description>
+		<release name="Hyperdimension Neptunia PP - Producing Perfection (USA)" region="USA"/>
+		<rom name="Hyperdimension Neptunia PP - Producing Perfection (USA).psv" size="1895825408" crc="32f6b80b" md5="7714b14f866680218993e7e4aaa5df7f" sha1="206cf4f4a7fb5d5ff61a418577d8ab20fa3a77ab"/>
+	</game>
+	<game name="Hyperdimension Neptunia Re;Birth1 (USA)">
+		<description>Hyperdimension Neptunia Re;Birth1 (USA)</description>
+		<release name="Hyperdimension Neptunia Re;Birth1 (USA)" region="USA"/>
+		<rom name="Hyperdimension Neptunia Re;Birth1 (USA).psv" size="3791650816" crc="9f44d5e4" md5="e3a918c80318d200aff538a3595e5c71" sha1="24142ddfa1b8ac330f62d072de83155650cf61e1"/>
+	</game>
+	<game name="Hyperdimension Neptunia U - Action Unleashed (USA)">
+		<description>Hyperdimension Neptunia U - Action Unleashed (USA)</description>
+		<release name="Hyperdimension Neptunia U - Action Unleashed (USA)" region="USA"/>
+		<rom name="Hyperdimension Neptunia U - Action Unleashed (USA).psv" size="1895825408" crc="be176435" md5="57f218a3c4160032b7f048075b0311a7" sha1="14e997e4c6baea5ead6663ac17601df4bc0ebe4e"/>
+	</game>
+	<game name="IA VT -Colorful- (Japan)">
+		<description>IA VT -Colorful- (Japan)</description>
+		<release name="IA VT -Colorful- (Japan)" region="JPN"/>
+		<rom name="IA VT -Colorful- (Japan).psv" size="3791650816" crc="82771f2d" md5="4cce475609c36b727d1ddeab95db3331" sha1="8299c2cf888dfee011c6844665017789345b5d80" status="verified"/>
+	</game>
+	<game name="IDOLiSH7 Twelve Fantasia! (Japan)">
+		<description>IDOLiSH7 Twelve Fantasia! (Japan)</description>
+		<release name="IDOLiSH7 Twelve Fantasia! (Japan)" region="JPN"/>
+		<rom name="IDOLiSH7 Twelve Fantasia! (Japan).psv" size="1895825408" crc="17c8aef6" md5="6e130ae7c6c8d3f20a89538419a58d3b" sha1="27804bfa862ea8806fdc44fb559d6023b26eb89a"/>
+	</game>
+	<game name="Invizimals - The Alliance (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>Invizimals - The Alliance (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="Invizimals - The Alliance (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="Invizimals - The Alliance (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="1895825408" crc="a282ccea" md5="a17d43c138b095ca437d2a76bd466978" sha1="1d058a6a9ffb485bb578ef79d04e0d57c8cd2aca"/>
+	</game>
+	<game name="J-Stars Victory Vs Plus (Europe, Asia)">
+		<description>J-Stars Victory Vs Plus (Europe, Asia)</description>
+		<release name="J-Stars Victory Vs Plus (Europe, Asia)" region="ASI"/>
+		<release name="J-Stars Victory Vs Plus (Europe, Asia)" region="EUR"/>
+		<rom name="J-Stars Victory Vs Plus (Europe, Asia).psv" size="3791650816" crc="8f71cffd" md5="c578cc4cbab9bbde5f1212765b3e7758" sha1="bb418e264fdb7f45d6bbb42fbd5383793074daf4"/>
+	</game>
+	<game name="Jak and Daxter Trilogy, The (Europe)">
+		<description>Jak and Daxter Trilogy, The (Europe)</description>
+		<release name="Jak and Daxter Trilogy, The (Europe)" region="EUR"/>
+		<rom name="Jak and Daxter Trilogy, The (Europe).psv" size="3791650816" crc="bb6babec" md5="5862ce3d24bd2891b4780db5b38914ba" sha1="e1f4348a18e84be7e8a3ec3308144132117ab295"/>
+	</game>
+	<game name="Katamari Damacy No-Vita (Japan)">
+		<description>Katamari Damacy No-Vita (Japan)</description>
+		<release name="Katamari Damacy No-Vita (Japan)" region="JPN"/>
+		<rom name="Katamari Damacy No-Vita (Japan).psv" size="1895825408" crc="d4628231" md5="d81a1a18a91ce489e33399c2676d5461" sha1="ac813f4e5fc7ef639dde4c3f1d3d17ca2f11438b"/>
+	</game>
+	<game name="Killzone - Mercenary (USA)">
+		<description>Killzone - Mercenary (USA)</description>
+		<release name="Killzone - Mercenary (USA)" region="USA"/>
+		<rom name="Killzone - Mercenary (USA).psv" size="3791650816" crc="e01e774b" md5="81c88595a6782f5d07a284a0f3831d47" sha1="26e9103bc57f66eeed34a4cab394c2204b5d2b14"/>
+	</game>
+	<game name="KLAP!! - Kind Love And Punish (Japan)">
+		<description>KLAP!! - Kind Love And Punish (Japan)</description>
+		<release name="KLAP!! - Kind Love And Punish (Japan)" region="JPN"/>
+		<rom name="KLAP!! - Kind Love And Punish (Japan).psv" size="3791650816" crc="3212d5d9" md5="a3df93a46a1deae6141815c5f00c1db3" sha1="b5c2f9f1d0dd12145f37531a1d6656f3c82246ba"/>
+	</game>
+	<game name="Legend of Heroes, The - Trails of Cold Steel (USA)">
+		<description>Legend of Heroes, The - Trails of Cold Steel (USA)</description>
+		<release name="Legend of Heroes, The - Trails of Cold Steel (USA)" region="USA"/>
+		<rom name="Legend of Heroes, The - Trails of Cold Steel (USA).psv" size="3791650816" crc="6b2b78d2" md5="88520470e2b32f9c1ff64a913b3b6226" sha1="11778f6d17642c503a8d9e5202f276401401c6e2"/>
+	</game>
+	<game name="LEGO - The Hobbit (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)">
+		<description>LEGO - The Hobbit (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)</description>
+		<release name="LEGO - The Hobbit (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)" region="EUR"/>
+		<rom name="LEGO - The Hobbit (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru).psv" size="1895825408" crc="d0b55ddb" md5="7fd0c9f76960d0fcc9be12ce386b0e6f" sha1="726ffb2d353520f8f212f1adc159402347542477"/>
+	</game>
+	<game name="LEGO Batman 2 - DC Super Heroes (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)">
+		<description>LEGO Batman 2 - DC Super Heroes (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)</description>
+		<release name="LEGO Batman 2 - DC Super Heroes (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)" region="EUR"/>
+		<rom name="LEGO Batman 2 - DC Super Heroes (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru).psv" size="1895825408" crc="8395fa2a" md5="e60ecec506d265e8cbf7c3145370fd69" sha1="3f84da28166c4c03e0c2a871a40da6eae79a1b91"/>
+	</game>
+	<game name="LEGO Harry Potter - Years 5-7 (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)">
+		<description>LEGO Harry Potter - Years 5-7 (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)</description>
+		<release name="LEGO Harry Potter - Years 5-7 (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)" region="EUR"/>
+		<rom name="LEGO Harry Potter - Years 5-7 (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru).psv" size="1895825408" crc="71a40df7" md5="b6239edce3c94653b969784a842289ac" sha1="c9c7dcee9a939e36999f8956893f1a5ed6689806"/>
+	</game>
+	<game name="LEGO Legends of Chima - Laval's Journey (Europe) (En,Fr,De,Es,It,Nl,Da,Pl)">
+		<description>LEGO Legends of Chima - Laval's Journey (Europe) (En,Fr,De,Es,It,Nl,Da,Pl)</description>
+		<release name="LEGO Legends of Chima - Laval's Journey (Europe) (En,Fr,De,Es,It,Nl,Da,Pl)" region="EUR"/>
+		<rom name="LEGO Legends of Chima - Laval's Journey (Europe) (En,Fr,De,Es,It,Nl,Da,Pl).psv" size="1895825408" crc="8c314fcc" md5="eb09d7d39d5008a50829b006d150e3e5" sha1="b9f281863ddba69f9fa650dd0ec7ad50c80003f2"/>
+	</game>
+	<game name="LEGO Movie Videogame, The (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)">
+		<description>LEGO Movie Videogame, The (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)</description>
+		<release name="LEGO Movie Videogame, The (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)" region="EUR"/>
+		<rom name="LEGO Movie Videogame, The (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru).psv" size="1895825408" crc="dea3f9b2" md5="a07b6aafa345cc554a3e164a87f859f9" sha1="cec9dd733ec08dc01cb651475f27f17aa89ded1f"/>
+	</game>
+	<game name="LEGO Ninjago - Nindroids (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)">
+		<description>LEGO Ninjago - Nindroids (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)</description>
+		<release name="LEGO Ninjago - Nindroids (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru)" region="EUR"/>
+		<rom name="LEGO Ninjago - Nindroids (Europe) (En,Fr,De,Es,It,Nl,Da,Pl,Ru).psv" size="1895825408" crc="c0147819" md5="66d8b77b9fda34da9f4420e515dc5316" sha1="423e1301d913e196fbe98665a5c38fd1d25b65ad"/>
+	</game>
+	<game name="Little Deviants (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>Little Deviants (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="Little Deviants (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="Little Deviants (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="1895825408" crc="3ba0310c" md5="a4d419b0f6c2297301082cfd0c3741ff" sha1="dd4c12f5196627f649678c129624178c1862d457"/>
+	</game>
+	<game name="Little Deviants (USA)">
+		<description>Little Deviants (USA)</description>
+		<release name="Little Deviants (USA)" region="USA"/>
+		<rom name="Little Deviants (USA).psv" size="1895825408" crc="28d821bb" md5="2026b5a0faa0b36b5e94285eb33c529b" sha1="f2f4d8bcbb0c5553b55523a85b4ee545dccacf2f"/>
+	</game>
+	<game name="LittleBigPlanet PS Vita (USA)">
+		<description>LittleBigPlanet PS Vita (USA)</description>
+		<release name="LittleBigPlanet PS Vita (USA)" region="USA"/>
+		<rom name="LittleBigPlanet PS Vita (USA).psv" size="1895825408" crc="6cc16f45" md5="c359d6d619f865410da6c227ac99e584" sha1="fd0ba994ca4fcf9510d1ddb3cf42981d6ec9ff61"/>
+	</game>
+	<game name="LittleBigPlanet PS Vita (Europe) (En,Fr,De,Es,It,Nl,Pt,No,Da,Fi,Pl,Ru)">
+		<description>LittleBigPlanet PS Vita (Europe) (En,Fr,De,Es,It,Nl,Pt,No,Da,Fi,Pl,Ru)</description>
+		<release name="LittleBigPlanet PS Vita (Europe) (En,Fr,De,Es,It,Nl,Pt,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="LittleBigPlanet PS Vita (Europe) (En,Fr,De,Es,It,Nl,Pt,No,Da,Fi,Pl,Ru).psv" size="1895825408" crc="e630e51f" md5="4f26c3cd6f7b08bf609a5a72c8cc3394" sha1="a284ed446ba809654ff4c05e5eef59ec093610cc"/>
+	</game>
+	<game name="LittleBigPlanet PS Vita - Marvel Super Hero Edition (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>LittleBigPlanet PS Vita - Marvel Super Hero Edition (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="LittleBigPlanet PS Vita - Marvel Super Hero Edition (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="LittleBigPlanet PS Vita - Marvel Super Hero Edition (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="1895825408" crc="e1d61691" md5="df4be6be7522e94ef0644d506f2699b2" sha1="1a8f5e0d40b2ff38720194f949f6e52a9debb3b3" status="verified"/>
+	</game>
+	<game name="Lost Dimension (Europe)">
+		<description>Lost Dimension (Europe)</description>
+		<release name="Lost Dimension (Europe)" region="EUR"/>
+		<rom name="Lost Dimension (Europe).psv" size="1895825408" crc="342fc630" md5="e68f278aa3a8d0b10883713f8a3eb766" sha1="a0de61c54e8d0884d92ab5354fa8ef6c9f5b78c2"/>
+	</game>
+	<game name="Love Live! School Idol Paradise Vol.1 - Printemps (Japan)">
+		<description>Love Live! School Idol Paradise Vol.1 - Printemps (Japan)</description>
+		<release name="Love Live! School Idol Paradise Vol.1 - Printemps (Japan)" region="JPN"/>
+		<rom name="Love Live! School Idol Paradise Vol.1 - Printemps (Japan).psv" size="1895825408" crc="f3142214" md5="676e73e5c4b7e445cc5bcc6ae22e1b07" sha1="16a09f06a648410a2a4a3f82d9fcc4ed1411eae0"/>
+	</game>
+	<game name="Love Live! School Idol Paradise Vol.2 - BiBi (Japan)">
+		<description>Love Live! School Idol Paradise Vol.2 - BiBi (Japan)</description>
+		<release name="Love Live! School Idol Paradise Vol.2 - BiBi (Japan)" region="JPN"/>
+		<rom name="Love Live! School Idol Paradise Vol.2 - BiBi (Japan).psv" size="1895825408" crc="3c899736" md5="d304805f8af20a62f47c581f855c7884" sha1="7bb869ee394cb02e5bb8cb5c3c4b56f9dec7dab7"/>
+	</game>
+	<game name="Lumines - Electronic Symphony (USA)">
+		<description>Lumines - Electronic Symphony (USA)</description>
+		<release name="Lumines - Electronic Symphony (USA)" region="USA"/>
+		<rom name="Lumines - Electronic Symphony (USA).psv" size="1895825408" crc="e6f67065" md5="b1a13a9e5691017426c453c1ebb9c021" sha1="da2c3f7608aab9655a6876e63f7e3786aafe2c5f"/>
+	</game>
+	<game name="Madden NFL 13 (USA)">
+		<description>Madden NFL 13 (USA)</description>
+		<release name="Madden NFL 13 (USA)" region="USA"/>
+		<rom name="Madden NFL 13 (USA).psv" size="3791650816" crc="e6b8e3d3" md5="08b032102355906263c07809fb4dc6f5" sha1="8206a43a5596683bcb83924f2019d617a52d5b99"/>
+	</game>
+	<game name="Mary Skelter - Nightmares (USA)">
+		<description>Mary Skelter - Nightmares (USA)</description>
+		<release name="Mary Skelter - Nightmares (USA)" region="USA"/>
+		<rom name="Mary Skelter - Nightmares (USA).vpk" size="3791650816" crc="2a65aab0" md5="bcde27024afd02cb91149b1a9071e0d4" sha1="a72dc04db4fcfe0aa5bbe8d77b20b083c8727ce8"/>
+	</game>
+	<game name="Metal Gear Solid HD Collection (USA)">
+		<description>Metal Gear Solid HD Collection (USA)</description>
+		<release name="Metal Gear Solid HD Collection (USA)" region="USA"/>
+		<rom name="Metal Gear Solid HD Collection (USA).psv" size="3791650816" crc="8f5984e5" md5="b1218e212dd6eb838aa9045a4bfbd79a" sha1="379880324273c9ac46f2261f9255c4ddfc240715"/>
+	</game>
+	<game name="Michael Jackson - The Experience HD (Europe) (En,Fr,De,Es,It)">
+		<description>Michael Jackson - The Experience HD (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Michael Jackson - The Experience HD (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Michael Jackson - The Experience HD (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="50366b76" md5="7bac7ca59a959b59ab9615d130b23440" sha1="01a0e8c1a21ae5d344f8f971d48941ab6bf3f89a"/>
+	</game>
+	<game name="Mind Zero (USA)">
+		<description>Mind Zero (USA)</description>
+		<release name="Mind Zero (USA)" region="USA"/>
+		<rom name="Mind Zero (USA).psv" size="1895825408" crc="51958187" md5="6fab913784bb1bc95f8035f35cee82b6" sha1="c8ec5695d9d7bd7bf152f44c6c82d54f5061ebc2"/>
+	</game>
+	<game name="Minecraft - PlayStation Vita Edition (Europe)">
+		<description>Minecraft - PlayStation Vita Edition (Europe)</description>
+		<release name="Minecraft - PlayStation Vita Edition (Europe)" region="EUR"/>
+		<rom name="Minecraft - PlayStation Vita Edition (Europe).psv" size="1895825408" crc="69205db1" md5="bf7bfdf56f46f3e129da5d534e0a5abc" sha1="c7b35ba7772eebca911abe474f59f6eca490e8e8"/>
+	</game>
+	<game name="Minecraft - PlayStation Vita Edition (Japan) (En,Ja)">
+		<description>Minecraft - PlayStation Vita Edition (Japan) (En,Ja)</description>
+		<release name="Minecraft - PlayStation Vita Edition (Japan) (En,Ja)" region="JPN"/>
+		<rom name="Minecraft - PlayStation Vita Edition (Japan) (En,Ja).psv" size="1895825408" crc="d3375e60" md5="547a2b95cc97c8baed9b95c7ad653f67" sha1="946c99e7021b9d16257491f5b97cce0c226d31af"/>
+	</game>
+	<game name="Minna no Golf 6 (Japan)">
+		<description>Minna no Golf 6 (Japan)</description>
+		<release name="Minna no Golf 6 (Japan)" region="JPN"/>
+		<rom name="Minna no Golf 6 (Japan).psv" size="1895825408" crc="d24f5373" md5="a1c61aeac20a034339107c5ed2e5ba29" sha1="6ed2b70fa115acd7107921f94cb8cd2f15d4e7aa"/>
+	</game>
+	<game name="MLB 13 - The Show (USA) (En,Fr)">
+		<description>MLB 13 - The Show (USA) (En,Fr)</description>
+		<release name="MLB 13 - The Show (USA) (En,Fr)" region="USA"/>
+		<rom name="MLB 13 - The Show (USA) (En,Fr).psv" size="3791650816" crc="f2170932" md5="13981059625efe0644630d6498f3541d" sha1="2ff55cd10d2d5ee9f9ce459838f0563ba26a55f2"/>
+	</game>
+	<game name="MLB 15 - The Show (Asia) (En)">
+		<description>MLB 15 - The Show (Asia) (En)</description>
+		<release name="MLB 15 - The Show (Asia) (En)" region="ASI"/>
+		<rom name="MLB 15 - The Show (Asia) (En).psv" size="3791650816" crc="3f7d5722" md5="defb706fd41f64a9755e768391707ac2" sha1="10f6c6131b22069ed0f354e034ce6c34db1509d0"/>
+	</game>
+	<game name="Mobile Suit Gundam Extreme VS-Force (Asia) (En)">
+		<description>Mobile Suit Gundam Extreme VS-Force (Asia) (En)</description>
+		<release name="Mobile Suit Gundam Extreme VS-Force (Asia) (En)" region="ASI"/>
+		<rom name="Mobile Suit Gundam Extreme VS-Force (Asia) (En).psv" size="1895825408" crc="d4a4ec27" md5="24c60a2f95ccc8454b8dbd6be684ab27" sha1="f9159ec635254efc8158e5947ef0cfa7b1fed7cd"/>
+	</game>
+	<game name="ModNation Racers - Road Trip (Europe) (En,Fr,De,Es,It,Ru)">
+		<description>ModNation Racers - Road Trip (Europe) (En,Fr,De,Es,It,Ru)</description>
+		<release name="ModNation Racers - Road Trip (Europe) (En,Fr,De,Es,It,Ru)" region="EUR"/>
+		<rom name="ModNation Racers - Road Trip (Europe) (En,Fr,De,Es,It,Ru).psv" size="1895825408" crc="c353bd5b" md5="ed13a92f810f189b446385a1be573b95" sha1="59845724462b9cb2791b79bf8753b3a763606a5d" status="verified"/>
+	</game>
+	<game name="Monster Hunter Frontier G6 Premium Package (Japan)">
+		<description>Monster Hunter Frontier G6 Premium Package (Japan)</description>
+		<release name="Monster Hunter Frontier G6 Premium Package (Japan)" region="JPN"/>
+		<rom name="Monster Hunter Frontier G6 Premium Package (Japan).psv" size="3791650816" crc="9f4e41ca" md5="b39be7328ff6f07d94db70ae173bfb15" sha1="93c5be44e0be75fdd1e1eb669f1ed28c094ffbc1"/>
+	</game>
+	<game name="MUD - FIM Motocross World Championship (Europe) (En,Fr,De,Es,It)">
+		<description>MUD - FIM Motocross World Championship (Europe) (En,Fr,De,Es,It)</description>
+		<release name="MUD - FIM Motocross World Championship (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="MUD - FIM Motocross World Championship (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="ffa7e961" md5="24fb736e369d4f7af6b57ec3d55ca674" sha1="31b5b7ea505e075ed51690a20438d9262366a3cb"/>
+	</game>
+	<game name="Muppets Movie, The - Adventures (Europe) (En,Fr,De,Es,It,Nl,Pt,El)">
+		<description>Muppets Movie, The - Adventures (Europe) (En,Fr,De,Es,It,Nl,Pt,El)</description>
+		<release name="Muppets Movie, The - Adventures (Europe) (En,Fr,De,Es,It,Nl,Pt,El)" region="EUR"/>
+		<rom name="Muppets Movie, The - Adventures (Europe) (En,Fr,De,Es,It,Nl,Pt,El).psv" size="1895825408" crc="1c5db2c6" md5="820bb7b9b3bf95df298bca72721d6e82" sha1="0352d19dcb1e80186cbba00dcac7484affa85787"/>
+	</game>
+	<game name="Need for Speed - Most Wanted (Europe) (En,Fr,De,Es,It,Ru)">
+		<description>Need for Speed - Most Wanted (Europe) (En,Fr,De,Es,It,Ru)</description>
+		<release name="Need for Speed - Most Wanted (Europe) (En,Fr,De,Es,It,Ru)" region="EUR"/>
+		<rom name="Need for Speed - Most Wanted (Europe) (En,Fr,De,Es,It,Ru).psv" size="3791650816" crc="783205df" md5="721e7f4580aae009b0cdc784c3b67387" sha1="59f67e6a288a7f3a318bae072bea8d5d4a028c68"/>
+	</game>
+	<game name="New Little King's Story (Europe) (En,Fr,De,Es,It)">
+		<description>New Little King's Story (Europe) (En,Fr,De,Es,It)</description>
+		<release name="New Little King's Story (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="New Little King's Story (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="29f3ca65" md5="d6c5a0da8ea8482579e5c9b59b8e88cf" sha1="8e37f5c607fcae11b52aa2bf2aa5e2050505f478"/>
+	</game>
+	<game name="Ninja Gaiden Sigma 2 Plus (USA) (En,Ja,Fr,De,Es,It)">
+		<description>Ninja Gaiden Sigma 2 Plus (USA) (En,Ja,Fr,De,Es,It)</description>
+		<release name="Ninja Gaiden Sigma 2 Plus (USA) (En,Ja,Fr,De,Es,It)" region="USA"/>
+		<rom name="Ninja Gaiden Sigma 2 Plus (USA) (En,Ja,Fr,De,Es,It).psv" size="3791650816" crc="1a13002d" md5="69bbcea350ac89b692317d10f5f13560" sha1="21d8974f471c8169cdc5ca23c5e5529ea3de06be"/>
+	</game>
+	<game name="Octodad - Dadliest Catch (USA)">
+		<description>Octodad - Dadliest Catch (USA)</description>
+		<release name="Octodad - Dadliest Catch (USA)" region="USA"/>
+		<rom name="Octodad - Dadliest Catch (USA).psv" size="1895825408" crc="c0f4ce94" md5="8a27ac87e6f0ee6817eb65b1daa58213" sha1="fb2224680e3e4f829e01450e4aa33e9969285bb4"/>
+	</game>
+	<game name="Odin Sphere - Leifthrasir (USA)">
+		<description>Odin Sphere - Leifthrasir (USA)</description>
+		<release name="Odin Sphere - Leifthrasir (USA)" region="USA"/>
+		<rom name="Odin Sphere - Leifthrasir (USA).psv" size="3791650816" crc="30ff22f5" md5="0dbcff8141470a58c0e0ba841442b39c" sha1="84e6e7c111ce74405672f9398cea9deb78c5412a"/>
+	</game>
+	<game name="One Piece - Pirate Warriors 3 (Europe) (En,Fr,De,Es,It)">
+		<description>One Piece - Pirate Warriors 3 (Europe) (En,Fr,De,Es,It)</description>
+		<release name="One Piece - Pirate Warriors 3 (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="One Piece - Pirate Warriors 3 (Europe) (En,Fr,De,Es,It).psv" size="3791650816" crc="92ef4f28" md5="5f90fbb2014e2922604f36c88bbc3453" sha1="d7ed244ed6f0106cf1556d90476ef7c8cf49d8dc"/>
+	</game>
+	<game name="Operation Babel - New Tokyo Legacy (USA)">
+		<description>Operation Babel - New Tokyo Legacy (USA)</description>
+		<release name="Operation Babel - New Tokyo Legacy (USA)" region="USA"/>
+		<rom name="Operation Babel - New Tokyo Legacy (USA).psv" size="1895825408" crc="f63e1f3f" md5="72f89b45090f6fce71205db28c73dede" sha1="a139a86ef23ad4284b12aa1acf5712d62190c421"/>
+	</game>
+	<game name="Period - Cube - Shackles of Amadeus (USA)">
+		<description>Period - Cube - Shackles of Amadeus (USA)</description>
+		<release name="Period - Cube - Shackles of Amadeus (USA)" region="USA"/>
+		<rom name="Period - Cube - Shackles of Amadeus (USA).psv" size="3791650816" crc="ffd61ea2" md5="b5c1f476f743677439422b922370265a" sha1="27186b613a280314f4b5b467ea5077d6c7bd3ded"/>
+	</game>
+	<game name="Persona 3 - Dancing Moon Night (Japan)">
+		<description>Persona 3 - Dancing Moon Night (Japan)</description>
+		<release name="Persona 3 - Dancing Moon Night (Japan)" region="JPN"/>
+		<rom name="Persona 3 - Dancing Moon Night (Japan).psv" size="3791650816" crc="6ac61773" md5="9b8574c0ad7d98bc54c9cb2f66ba8416" sha1="cf866760d155f0602bba5697a8887b0349ecefc2"/>
+	</game>
+	<game name="Persona 4 - Dancing All Night (USA)">
+		<description>Persona 4 - Dancing All Night (USA)</description>
+		<release name="Persona 4 - Dancing All Night (USA)" region="USA"/>
+		<rom name="Persona 4 - Dancing All Night (USA).psv" size="3791650816" crc="8cd8e25f" md5="30adcc0d0390779d8c54cecf910ec37c" sha1="01d15eedfc22cf019093a0e6fd1af97870356ec7"/>
+	</game>
+	<game name="Persona 4 - Dancing All Night (Japan)">
+		<description>Persona 4 - Dancing All Night (Japan)</description>
+		<release name="Persona 4 - Dancing All Night (Japan)" region="JPN"/>
+		<rom name="Persona 4 - Dancing All Night (Japan).psv" size="3791650816" crc="faf14935" md5="11b10d0d8b9f0d078b28efdfc149754b" sha1="dc49a793244b4628879288cf623d49d6de5dbb31"/>
+	</game>
+	<game name="Persona 4 Golden (USA)">
+		<description>Persona 4 Golden (USA)</description>
+		<release name="Persona 4 Golden (USA)" region="USA"/>
+		<rom name="Persona 4 Golden (USA).psv" size="3791650816" crc="9e247e15" md5="6ea7611d133cc40410273daf8f4871d1" sha1="3cfb01395324b75ef3c110f00934b54e4001ad78" status="verified"/>
+	</game>
+	<game name="Persona 4 The GOLDEN (Japan)">
+		<description>Persona 4 The GOLDEN (Japan)</description>
+		<release name="Persona 4 The GOLDEN (Japan)" region="JPN"/>
+		<rom name="Persona 4 The GOLDEN (Japan).psv" size="3791650816" crc="aed49fb2" md5="82186705b753c69eb78bec5b81bd6d95" sha1="baed3799f4f414691972f8f65185c2631be2f734"/>
+	</game>
+	<game name="Persona 5 - Dancing Star Night (Japan)">
+		<description>Persona 5 - Dancing Star Night (Japan)</description>
+		<release name="Persona 5 - Dancing Star Night (Japan)" region="JPN"/>
+		<rom name="Persona 5 - Dancing Star Night (Japan).psv" size="3791650816" crc="bdb16b06" md5="c2ef21ee79301cdb515751c5ff99193c" sha1="ccb4c7171e8b0ca470184725fed1372f6646f6f7"/>
+	</game>
+	<game name="Phantasy Star Online 2 (Japan)">
+		<description>Phantasy Star Online 2 (Japan)</description>
+		<release name="Phantasy Star Online 2 (Japan)" region="JPN"/>
+		<rom name="Phantasy Star Online 2 (Japan).psv" size="3791650816" crc="e0f57d41" md5="72c79f9b5669d84dc8866485f6d8ee2a" sha1="cef2bc8d23e41264f24ad40eb4e711ee258f2f51"/>
+	</game>
+	<game name="PlayStation All-Stars Battle Royale (USA) (En,Ja,Es,Pt)">
+		<description>PlayStation All-Stars Battle Royale (USA) (En,Ja,Es,Pt)</description>
+		<release name="PlayStation All-Stars Battle Royale (USA) (En,Ja,Es,Pt)" region="USA"/>
+		<rom name="PlayStation All-Stars Battle Royale (USA) (En,Ja,Es,Pt).psv" size="1895825408" crc="4025dde9" md5="4520b0c414a2b83e6f5a8f8e20e6d6ec" sha1="34fbd65714e9778b0dfe64bdf911c5e820177193"/>
+	</game>
+	<game name="PlayStation All-Stars Battle Royale (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>PlayStation All-Stars Battle Royale (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="PlayStation All-Stars Battle Royale (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="PlayStation All-Stars Battle Royale (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="1895825408" crc="c26e9f26" md5="815c0e452463f1c5774d9423fb4fe04d" sha1="b3c73118ec2482c44e6e913f61ff224e091a5f15"/>
+	</game>
+	<game name="Psychedelica of the Ashen Hawk (USA)">
+		<description>Psychedelica of the Ashen Hawk (USA)</description>
+		<release name="Psychedelica of the Ashen Hawk (USA)" region="USA"/>
+		<rom name="Psychedelica of the Ashen Hawk (USA).psv" size="1895825408" crc="1a033189" md5="2da3fe4c336ca6b0bdac6a941115b11e" sha1="51df1b73e3e1f94dca6143812f4ded5e7ab7fc03"/>
+	</game>
+	<game name="Psychedelica of the Black Butterfly (USA)">
+		<description>Psychedelica of the Black Butterfly (USA)</description>
+		<release name="Psychedelica of the Black Butterfly (USA)" region="USA"/>
+		<rom name="Psychedelica of the Black Butterfly (USA).psv" size="1895825408" crc="67354c52" md5="2bce2f559149316e223976de96bc8412" sha1="bf003474385aa70e8192f0aaf83eb6cbeb5c5162"/>
+	</game>
+	<game name="Puyo Puyo Tetris (Japan)">
+		<description>Puyo Puyo Tetris (Japan)</description>
+		<release name="Puyo Puyo Tetris (Japan)" region="JPN"/>
+		<rom name="Puyo Puyo Tetris (Japan).psv" size="1895825408" crc="9d187ee9" md5="cfdf496530eae8861f346b584893a872" sha1="8490c34c4afd0f7a04e44e0b8642fbb8729cc020"/>
+	</game>
+	<game name="Ratchet &amp; Clank Trilogy, The (Europe) (En,Fr,De,Es,It)">
+		<description>Ratchet &amp; Clank Trilogy, The (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Ratchet &amp; Clank Trilogy, The (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Ratchet &amp; Clank Trilogy, The (Europe) (En,Fr,De,Es,It).psv" size="3791650816" crc="2669a752" md5="9d8c767156f9c0d4d1f97974a11f52ed" sha1="cca12573e900ddc806ec7a6431d9a20e9467a577"/>
+	</game>
+	<game name="Rayman Origins (Europe) (En,Fr,De,Es,It,Nl)">
+		<description>Rayman Origins (Europe) (En,Fr,De,Es,It,Nl)</description>
+		<release name="Rayman Origins (Europe) (En,Fr,De,Es,It,Nl)" region="EUR"/>
+		<rom name="Rayman Origins (Europe) (En,Fr,De,Es,It,Nl).psv" size="1895825408" crc="9614926f" md5="6c70459c881d57f24e189ab4d086a7ed" sha1="501b693d7e7528f466d7fff6ff019c45787fe1e4"/>
+	</game>
+	<game name="Reality Fighters (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>Reality Fighters (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="Reality Fighters (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="Reality Fighters (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="1895825408" crc="1c362bdc" md5="07af03ed09bb96eb6f2819a474b62a52" sha1="28ede1422ce530463419906fc5ae033911ff2d53"/>
+	</game>
+	<game name="Resident Evil - Revelations 2 (Asia) (En,Ja,Fr,De,Es,It,Pt-BR,Zh,Ko,Pl,Ru)">
+		<description>Resident Evil - Revelations 2 (Asia) (En,Ja,Fr,De,Es,It,Pt-BR,Zh,Ko,Pl,Ru)</description>
+		<release name="Resident Evil - Revelations 2 (Asia) (En,Ja,Fr,De,Es,It,Pt-BR,Zh,Ko,Pl,Ru)" region="ASI"/>
+		<rom name="Resident Evil - Revelations 2 (Asia) (En,Ja,Fr,De,Es,It,Pt-BR,Zh,Ko,Pl,Ru).psv" size="3791650816" crc="b418a46a" md5="19778147862988fc83a104fa14c951a1" sha1="3b6d552b728ac528dbb870694721661e7168276b"/>
+	</game>
+	<game name="Resistance - Burning Skies (USA)">
+		<description>Resistance - Burning Skies (USA)</description>
+		<release name="Resistance - Burning Skies (USA)" region="USA"/>
+		<rom name="Resistance - Burning Skies (USA).psv" size="3791650816" crc="814d58ec" md5="38f495f993619ca89fd655b940b72131" sha1="aa0cf83af01592620ac0446616bf6135716cf515"/>
+	</game>
+	<game name="Resistance - Burning Skies (France) (Fr,De,It)">
+		<description>Resistance - Burning Skies (France) (Fr,De,It)</description>
+		<release name="Resistance - Burning Skies (France) (Fr,De,It)" region="FRA"/>
+		<rom name="Resistance - Burning Skies (France) (Fr,De,It).psv" size="3791650816" crc="33d44269" md5="836cdace4d759c28fcf8ef982e97d795" sha1="2672a5d2a60bae02f8704bb3f7ed9d9874cbc8cd"/>
+	</game>
+	<game name="Retro City Rampage DX (USA) (Second printing)">
+		<description>Retro City Rampage DX (USA) (Second printing)</description>
+		<release name="Retro City Rampage DX (USA) (Second printing)" region="USA"/>
+		<rom name="Retro City Rampage DX (USA) (Second printing).psv" size="1895825408" crc="23945d39" md5="202bf18c8b744262156b9ca681f206e3" sha1="4a7a3f865c2b74c1a99bb4628b997cda68eb3318"/>
+	</game>
+	<game name="Risk of Rain (USA)">
+		<description>Risk of Rain (USA)</description>
+		<release name="Risk of Rain (USA)" region="USA"/>
+		<rom name="Risk of Rain (USA).psv" size="1895825408" crc="91c875a9" md5="60053a761785e195f844b47ffb5fa918" sha1="c53edd4fe2dca005a743637bfb04f1fd6d7b1c66"/>
+	</game>
+	<game name="Root Letter (USA)">
+		<description>Root Letter (USA)</description>
+		<release name="Root Letter (USA)" region="USA"/>
+		<rom name="Root Letter (USA).psv" size="3791650816" crc="b677ca6b" md5="ba15775d03b6286d7208696b607a87f9" sha1="13d21a56284af36e4205fa48223cb960aa375510"/>
+	</game>
+	<game name="SD Gundam G Generation Genesis (Asia) (En)">
+		<description>SD Gundam G Generation Genesis (Asia) (En)</description>
+		<release name="SD Gundam G Generation Genesis (Asia) (En)" region="ASI"/>
+		<rom name="SD Gundam G Generation Genesis (Asia) (En).psv" size="3791650816" crc="e73b4d22" md5="5fd7fa87afbb8bbadcfc8b4312694bbc" sha1="ce524ca9cd236485b79345641b63121b2f38feeb"/>
+	</game>
+	<game name="Senran Kagura - Estival Versus (Europe)">
+		<description>Senran Kagura - Estival Versus (Europe)</description>
+		<release name="Senran Kagura - Estival Versus (Europe)" region="EUR"/>
+		<rom name="Senran Kagura - Estival Versus (Europe).psv" size="3791650816" crc="3fc8793f" md5="9a054f531c638ad0fd800cbc58340a7f" sha1="05e76a997ac5d314dd511b108a820ff4a9e0dc63"/>
+	</game>
+	<game name="Senran Kagura - Estival Versus (USA)">
+		<description>Senran Kagura - Estival Versus (USA)</description>
+		<release name="Senran Kagura - Estival Versus (USA)" region="USA"/>
+		<rom name="Senran Kagura - Estival Versus (USA).psv" size="3791650816" crc="68575280" md5="6f68d07af9f0fe54ec21e16528360d19" sha1="df507b0a83de324da2ce12fcfdaeaf11bce36d45"/>
+	</game>
+	<game name="Senran Kagura Shinovi Versus (USA)">
+		<description>Senran Kagura Shinovi Versus (USA)</description>
+		<release name="Senran Kagura Shinovi Versus (USA)" region="USA"/>
+		<rom name="Senran Kagura Shinovi Versus (USA).psv" size="3791650816" crc="eab2c46c" md5="2866800e6ecc85019ece57a572f743ad" sha1="13a3cf7485d8f17a170f5f1c7d4686a57bea2613"/>
+	</game>
+	<game name="Shakedown Hawaii (USA)">
+		<description>Shakedown Hawaii (USA)</description>
+		<release name="Shakedown Hawaii (USA)" region="USA"/>
+		<rom name="Shakedown Hawaii (USA).psv" size="1895825408" crc="99466733" md5="5686d16ce2c2c634116266aafcf373a7" sha1="ad2262477d9f30abe5dc4ae4382b76c2ca8a966a"/>
+	</game>
+	<game name="Shingeki no Kyojin (Japan)">
+		<description>Shingeki no Kyojin (Japan)</description>
+		<release name="Shingeki no Kyojin (Japan)" region="JPN"/>
+		<rom name="Shingeki no Kyojin (Japan).psv" size="3791650816" crc="b4a8acb2" md5="dd6b9531f60c42513df8ca9b13ff38ae" sha1="0d2fd97f5db8f6ee35bb601740fb4d4ce3f793cc"/>
+	</game>
+	<game name="Silent Hill - Book of Memories (USA)">
+		<description>Silent Hill - Book of Memories (USA)</description>
+		<release name="Silent Hill - Book of Memories (USA)" region="USA"/>
+		<rom name="Silent Hill - Book of Memories (USA).psv" size="1895825408" crc="6bdf1304" md5="3cb650caeb14e7d5d6153122c5e25234" sha1="026e149065d1ab8766e0f6502eace448c77e1e7e"/>
+	</game>
+	<game name="Sly Cooper - Thieves in Time (Europe) (Pl,Ru,Tr,Cs)">
+		<description>Sly Cooper - Thieves in Time (Europe) (Pl,Ru,Tr,Cs)</description>
+		<release name="Sly Cooper - Thieves in Time (Europe) (Pl,Ru,Tr,Cs)" region="EUR"/>
+		<rom name="Sly Cooper - Thieves in Time (Europe) (Pl,Ru,Tr,Cs).psv" size="3791650816" crc="3c4855ab" md5="8f81278b611e49dfb6c5a7e3578f0b82" sha1="3341fb235c6a67f5ec579d9c35f0a52a9e814deb"/>
+	</game>
+	<game name="Sonic &amp; All-Stars Racing - Transformed (USA)">
+		<description>Sonic &amp; All-Stars Racing - Transformed (USA)</description>
+		<release name="Sonic &amp; All-Stars Racing - Transformed (USA)" region="USA"/>
+		<rom name="Sonic &amp; All-Stars Racing - Transformed (USA).psv" size="1895825408" crc="c8029678" md5="df54e7414abc88cb9b3930ba21d8c846" sha1="997c1b9c02d19495c357d0bb29046328c26107df"/>
+	</game>
+	<game name="Soul Sacrifice (Japan)">
+		<description>Soul Sacrifice (Japan)</description>
+		<release name="Soul Sacrifice (Japan)" region="JPN"/>
+		<rom name="Soul Sacrifice (Japan).psv" size="3791650816" crc="30bc506b" md5="71cecb2e615bc33ac7629ad5d542df0a" sha1="6ed0ed397e118f6622524dc362de54743441ea2d" status="verified"/>
+	</game>
+	<game name="Soul Sacrifice - Delta (Asia) (En)">
+		<description>Soul Sacrifice - Delta (Asia) (En)</description>
+		<release name="Soul Sacrifice - Delta (Asia) (En)" region="ASI"/>
+		<rom name="Soul Sacrifice - Delta (Asia) (En).psv" size="3791650816" crc="3d5a74b7" md5="46010a5b27af4ee553c6ae2123bf37bd" sha1="d2d4fff77c23777836956d9b22ac03f67beaa4eb"/>
+	</game>
+	<game name="Spy Hunter (Europe) (En,Fr,De,Es,It,Nl)">
+		<description>Spy Hunter (Europe) (En,Fr,De,Es,It,Nl)</description>
+		<release name="Spy Hunter (Europe) (En,Fr,De,Es,It,Nl)" region="EUR"/>
+		<rom name="Spy Hunter (Europe) (En,Fr,De,Es,It,Nl).psv" size="1895825408" crc="dfea7103" md5="78f9e69fa0226ab3f37b1aac37d2088f" sha1="62aec7d19b27f2bac84aed0d279eb2009eb25fde"/>
+	</game>
+	<game name="Steins;Gate (USA)">
+		<description>Steins;Gate (USA)</description>
+		<release name="Steins;Gate (USA)" region="USA"/>
+		<rom name="Steins;Gate (USA).psv" size="1895825408" crc="66e874ac" md5="d1ff5be5520e0ac41bffceb4180f5b9b" sha1="430e915979ffb4d91181f31a0fe4780945c8eb44"/>
+	</game>
+	<game name="Stranger of Sword City (USA)">
+		<description>Stranger of Sword City (USA)</description>
+		<release name="Stranger of Sword City (USA)" region="USA"/>
+		<rom name="Stranger of Sword City (USA).psv" size="1895825408" crc="ef7b704d" md5="12d7998a1d181c9da5f0ed51f08e13e5" sha1="7d5c855d07e145456f6883ddc1db0e9669daaee1"/>
+	</game>
+	<game name="Super Monkey Ball - Banana Splitz (Europe) (En,Fr,De,Es,It)">
+		<description>Super Monkey Ball - Banana Splitz (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Super Monkey Ball - Banana Splitz (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Super Monkey Ball - Banana Splitz (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="2969482a" md5="9d7cb9832395d4c1ea8fcd7e1b85ab42" sha1="f8909699520d9d16a26fd531089cbe707a8f0e3f"/>
+	</game>
+	<game name="Super Robot Wars V (Asia) (En)">
+		<description>Super Robot Wars V (Asia) (En)</description>
+		<release name="Super Robot Wars V (Asia) (En)" region="ASI"/>
+		<rom name="Super Robot Wars V (Asia) (En).psv" size="3791650816" crc="2354f938" md5="ebc0001b0764d984fb61227c2f8f1e5a" sha1="2023ea1be1e4fe0a2c8e6cc4a0ebcf5cf26f1337"/>
+	</game>
+	<game name="SUPERBEAT - XONIC (Japan)">
+		<description>SUPERBEAT - XONIC (Japan)</description>
+		<release name="SUPERBEAT - XONIC (Japan)" region="JPN"/>
+		<rom name="SUPERBEAT - XONIC (Japan).psv" size="3791650816" crc="5bf3ca5b" md5="9cfbff427e808bb163bed6699e051801" sha1="a0a873804292dd78aa1ca19f7aaf29fe7674a327"/>
+	</game>
+	<game name="Superdimension Neptune VS Sega Hard Girls (USA)">
+		<description>Superdimension Neptune VS Sega Hard Girls (USA)</description>
+		<release name="Superdimension Neptune VS Sega Hard Girls (USA)" region="USA"/>
+		<rom name="Superdimension Neptune VS Sega Hard Girls (USA).psv" size="1895825408" crc="d841cef4" md5="b8fcf758b7ac0517831fdb84aa388a3d" sha1="ac98f479c3c7f472ab0a390ed0bc8e1e70064c3b"/>
+	</game>
+	<game name="Sword Art Online - Hollow Fragment (Japan)">
+		<description>Sword Art Online - Hollow Fragment (Japan)</description>
+		<release name="Sword Art Online - Hollow Fragment (Japan)" region="JPN"/>
+		<rom name="Sword Art Online - Hollow Fragment (Japan).psv" size="3791650816" crc="0acd04d3" md5="f446d7255977a6a0635fd7f737a2a667" sha1="41109c719b24d16d714a9260658e478111665d4b"/>
+	</game>
+	<game name="Sword Art Online - Hollow Fragment (Asia) (En,Zh-Hans)">
+		<description>Sword Art Online - Hollow Fragment (Asia) (En,Zh-Hans)</description>
+		<release name="Sword Art Online - Hollow Fragment (Asia) (En,Zh-Hans)" region="ASI"/>
+		<rom name="Sword Art Online - Hollow Fragment (Asia) (En,Zh-Hans).psv" size="3791650816" crc="92714a0f" md5="4087f21d316f925cf011dafe9a567699" sha1="d26ac4c6b1848d1b1b4a8204abe847ce488ca93b"/>
+	</game>
+	<game name="Sword Art Online - Hollow Realization (Europe) (En,Fr,De,Es,It)">
+		<description>Sword Art Online - Hollow Realization (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Sword Art Online - Hollow Realization (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Sword Art Online - Hollow Realization (Europe) (En,Fr,De,Es,It).psv" size="3791650816" crc="293c7290" md5="5e77a0612ba6c4b7b5421b9017c1c3e5" sha1="16ffd455e024faf8a5c85b515b43b5ad2e58432e"/>
+	</game>
+	<game name="Sword Art Online - Lost Song (USA)">
+		<description>Sword Art Online - Lost Song (USA)</description>
+		<release name="Sword Art Online - Lost Song (USA)" region="USA"/>
+		<rom name="Sword Art Online - Lost Song (USA).psv" size="3791650816" crc="a3a75e02" md5="915de0dd2939eaa24764f7de0394d763" sha1="c55a55e924ba30e6d2591e9f90d95d067445efc8"/>
+	</game>
+	<game name="Tadeo Jones (Europe) (En,Es)">
+		<description>Tadeo Jones (Europe) (En,Es)</description>
+		<release name="Tadeo Jones (Europe) (En,Es)" region="EUR"/>
+		<rom name="Tadeo Jones (Europe) (En,Es).psv" size="1895825408" crc="69928210" md5="aef5ab07af747fcad1690bdf80cf5620" sha1="e082f371dc3ea23e733c46ae537fec26331e3644"/>
+	</game>
+	<game name="Tales of Hearts R (USA) (En,Ja,Fr,De,Es,It)">
+		<description>Tales of Hearts R (USA) (En,Ja,Fr,De,Es,It)</description>
+		<release name="Tales of Hearts R (USA) (En,Ja,Fr,De,Es,It)" region="USA"/>
+		<rom name="Tales of Hearts R (USA) (En,Ja,Fr,De,Es,It).psv" size="3791650816" crc="5f0e2b17" md5="b29cf98f6b8f0968f26219b9dcee5f1e" sha1="cd96074fa0561507ef9905dbbc49d8af3c7b253d"/>
+	</game>
+	<game name="Tearaway (USA)">
+		<description>Tearaway (USA)</description>
+		<release name="Tearaway (USA)" region="USA"/>
+		<rom name="Tearaway (USA).psv" size="1895825408" crc="103bd960" md5="89479f885301ea648dd086b886f3a82f" sha1="da651759cf575ea2a1e0fd65d40b4821d826a6d7" status="verified"/>
+	</game>
+	<game name="Terraria (USA)">
+		<description>Terraria (USA)</description>
+		<release name="Terraria (USA)" region="USA"/>
+		<rom name="Terraria (USA).psv" size="1895825408" crc="4fa5c08e" md5="cabb9a347aa724c626eba38d2a2dce59" sha1="34b173be4e53610ad11f3ead9c3f494cbb8cec22"/>
+	</game>
+	<game name="Tetris Ultimate (USA)">
+		<description>Tetris Ultimate (USA)</description>
+		<release name="Tetris Ultimate (USA)" region="USA"/>
+		<rom name="Tetris Ultimate (USA).psv" size="1895825408" crc="566506d3" md5="a34c27887ac7c91e67e7358026721307" sha1="a0e5e2f4092c3f8211c48a40cc1f936b272e7d41"/>
+	</game>
+	<game name="Tokyo Twilight - Ghost Hunters (Europe)">
+		<description>Tokyo Twilight - Ghost Hunters (Europe)</description>
+		<release name="Tokyo Twilight - Ghost Hunters (Europe)" region="EUR"/>
+		<rom name="Tokyo Twilight - Ghost Hunters (Europe).psv" size="1895825408" crc="2892d957" md5="a9e6e3d62d3ae282a4fae252dea0d4a7" sha1="72d4ea998d66ab96c12f25093da5aa19fef5f1a7"/>
+	</game>
+	<game name="Tokyo Twilight - Ghost Hunters (USA)">
+		<description>Tokyo Twilight - Ghost Hunters (USA)</description>
+		<release name="Tokyo Twilight - Ghost Hunters (USA)" region="USA"/>
+		<rom name="Tokyo Twilight - Ghost Hunters (USA).psv" size="1895825408" crc="daecaa62" md5="ced707334f726546c34eff830d85d601" sha1="59dcc8d3db8549fe31dee49fb1316f07850ab3d3"/>
+	</game>
+	<game name="Tokyo Xanadu (Japan)">
+		<description>Tokyo Xanadu (Japan)</description>
+		<release name="Tokyo Xanadu (Japan)" region="JPN"/>
+		<rom name="Tokyo Xanadu (Japan).psv" size="3791650816" crc="37663e05" md5="780d0ed1118cdaa05a7cbf26bcc3067b" sha1="ea749a80a7a1b5118ae4260d356705c5ca955445" status="verified"/>
+	</game>
+	<game name="Touch My Katamari (Europe)">
+		<description>Touch My Katamari (Europe)</description>
+		<release name="Touch My Katamari (Europe)" region="EUR"/>
+		<rom name="Touch My Katamari (Europe).psv" size="1895825408" crc="bcda31b1" md5="7bacdbeb0cec430b0c8442db8e2b6915" sha1="2ac4d3de5132fa800fde050fe94b42342f36bf40"/>
+	</game>
+	<game name="Toukiden (Japan)">
+		<description>Toukiden (Japan)</description>
+		<release name="Toukiden (Japan)" region="JPN"/>
+		<rom name="Toukiden (Japan).psv" size="3791650816" crc="b12fd329" md5="fbec75b568da4cda3d2ac0bef14bf8a5" sha1="a971f34dd03259bae870959e5eefa189093b2a20"/>
+	</game>
+	<game name="Toukiden - Kiwami (USA)">
+		<description>Toukiden - Kiwami (USA)</description>
+		<release name="Toukiden - Kiwami (USA)" region="USA"/>
+		<rom name="Toukiden - Kiwami (USA).psv" size="3791650816" crc="ede00e80" md5="f95dfc4260a4589a18ca916ed502ac6b" sha1="b729411b4de54e90d101db01ba790e93f2bc43b8"/>
+	</game>
+	<game name="Toukiden - The Age of Demons (USA)">
+		<description>Toukiden - The Age of Demons (USA)</description>
+		<release name="Toukiden - The Age of Demons (USA)" region="USA"/>
+		<rom name="Toukiden - The Age of Demons (USA).psv" size="3791650816" crc="b9d26d0e" md5="efaa402d9eace0136a48a937f3b5dd48" sha1="d848e0fb48318c433167cd734f0a82e1c7d72e4e"/>
+	</game>
+	<game name="Toukiden 2 (USA)">
+		<description>Toukiden 2 (USA)</description>
+		<release name="Toukiden 2 (USA)" region="USA"/>
+		<rom name="Toukiden 2 (USA).psv" size="3791650816" crc="3ded7875" md5="4f56bc608dadad62709cf71f7e10566a" sha1="e3b7c92912cb572eb3a70074e4cbeb14244d2e02"/>
+	</game>
+	<game name="Trillion - God of Destruction (USA) (En,Ja)">
+		<description>Trillion - God of Destruction (USA) (En,Ja)</description>
+		<release name="Trillion - God of Destruction (USA) (En,Ja)" region="USA"/>
+		<rom name="Trillion - God of Destruction (USA) (En,Ja).psv" size="3791650816" crc="c1df270b" md5="108e0c22ed118558d6d924fb4c261cbf" sha1="0d3f8808a4b04963d94425f1b6ffc5a452ebfb41"/>
+	</game>
+	<game name="Uncharted - Golden Abyss (USA)">
+		<description>Uncharted - Golden Abyss (USA)</description>
+		<release name="Uncharted - Golden Abyss (USA)" region="USA"/>
+		<rom name="Uncharted - Golden Abyss (USA).psv" size="3791650816" crc="9b80eb3b" md5="1a1548c42936e896d873447a96d6678b" sha1="16ebc3ef8dff2cca9548d8dc2ec68b5686a03917"/>
+	</game>
+	<game name="Uncharted - Golden Abyss (Europe) (En-GB,Es,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>Uncharted - Golden Abyss (Europe) (En-GB,Es,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="Uncharted - Golden Abyss (Europe) (En-GB,Es,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="Uncharted - Golden Abyss (Europe) (En-GB,Es,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="3791650816" crc="e95bdb0c" md5="7e221230d4d8f4d52ed5b16e4c054331" sha1="742de699e66e75835a1013030bf5e13dd60a7525"/>
+	</game>
+	<game name="Uncharted - Golden Abyss (France) (En,Fr,De,Es,It)">
+		<description>Uncharted - Golden Abyss (France) (En,Fr,De,Es,It)</description>
+		<release name="Uncharted - Golden Abyss (France) (En,Fr,De,Es,It)" region="FRA"/>
+		<rom name="Uncharted - Golden Abyss (France) (En,Fr,De,Es,It).psv" size="3791650816" crc="eabd668e" md5="13771db9f49e9c6089ecb7d64818c3fa" sha1="179d727d44d2d55bb1ce4797ba063613389b5bd9" status="verified"/>
+	</game>
+	<game name="Unit 13 (Europe) (En,Fr,De,It,Nl)">
+		<description>Unit 13 (Europe) (En,Fr,De,It,Nl)</description>
+		<release name="Unit 13 (Europe) (En,Fr,De,It,Nl)" region="EUR"/>
+		<rom name="Unit 13 (Europe) (En,Fr,De,It,Nl).psv" size="1895825408" crc="1a6f7703" md5="ce536ced6c7925876cfb867abfa9fbb1" sha1="7454262dbfa04d6cd058a51c56b5933f8ceb1f3d"/>
+	</game>
+	<game name="Uppers (Japan)">
+		<description>Uppers (Japan)</description>
+		<release name="Uppers (Japan)" region="JPN"/>
+		<rom name="Uppers (Japan).psv" size="3791650816" crc="8fd6512b" md5="831fb21611f6f5e17c11956317790359" sha1="2ff9bd37bddba8d5615dceb545082e949dd81270"/>
+	</game>
+	<game name="Uta Kumi 575 (Japan)">
+		<description>Uta Kumi 575 (Japan)</description>
+		<release name="Uta Kumi 575 (Japan)" region="JPN"/>
+		<rom name="Uta Kumi 575 (Japan).psv" size="1895825408" crc="53eddb51" md5="b76858e1c785d6bf6fe0742da5083377" sha1="6c02aefe882e697d1c9918cb7d3f036725484db9"/>
+	</game>
+	<game name="Uta no Prince-Sama - Music 3 (Japan)">
+		<description>Uta no Prince-Sama - Music 3 (Japan)</description>
+		<release name="Uta no Prince-Sama - Music 3 (Japan)" region="JPN"/>
+		<rom name="Uta no Prince-Sama - Music 3 (Japan).psv" size="1895825408" crc="ddfc0750" md5="e6dc0d950a7203e78cd5128b6f1cb3aa" sha1="846c084e8cf74b4276d3ecf2a4033065540d7874"/>
+	</game>
+	<game name="Utawarerumono - Mask of Deception (USA)">
+		<description>Utawarerumono - Mask of Deception (USA)</description>
+		<release name="Utawarerumono - Mask of Deception (USA)" region="USA"/>
+		<rom name="Utawarerumono - Mask of Deception (USA).psv" size="3791650816" crc="aa9459e1" md5="f4959525d10f97aa1d0a07048b48ed2f" sha1="72a0acc0d4c60988986103ee22617b07db9771a2"/>
+	</game>
+	<game name="Virtua Tennis 4 - World Tour Edition (Europe) (En,Fr,De,Es,It)">
+		<description>Virtua Tennis 4 - World Tour Edition (Europe) (En,Fr,De,Es,It)</description>
+		<release name="Virtua Tennis 4 - World Tour Edition (Europe) (En,Fr,De,Es,It)" region="EUR"/>
+		<rom name="Virtua Tennis 4 - World Tour Edition (Europe) (En,Fr,De,Es,It).psv" size="1895825408" crc="3c964b20" md5="3651ba52fb00d955cdf0fab91717ab52" sha1="1f8575806194de45167c010ec287495812974e91"/>
+	</game>
+	<game name="Walking Dead, The - A Telltale Games Series - The Complete First Season (USA) (En,Fr,De,Es,It)">
+		<description>Walking Dead, The - A Telltale Games Series - The Complete First Season (USA) (En,Fr,De,Es,It)</description>
+		<release name="Walking Dead, The - A Telltale Games Series - The Complete First Season (USA) (En,Fr,De,Es,It)" region="USA"/>
+		<rom name="Walking Dead, The - A Telltale Games Series - The Complete First Season (USA) (En,Fr,De,Es,It).psv" size="3791650816" crc="be596546" md5="8ae72ce35cbe7c7ecabd36ff80a7bf09" sha1="d9d53b27224fca09cfe5abdc01c123d599536a71"/>
+	</game>
+	<game name="Walking Dead, The - Season Two - A Telltale Games Series (USA)">
+		<description>Walking Dead, The - Season Two - A Telltale Games Series (USA)</description>
+		<release name="Walking Dead, The - Season Two - A Telltale Games Series (USA)" region="USA"/>
+		<rom name="Walking Dead, The - Season Two - A Telltale Games Series (USA).psv" size="3791650816" crc="f0b7dc99" md5="c5580dc2caef50a43bd377f33b1be931" sha1="b0e28f71bc6093f6188c2de76e103ff7188f02ab"/>
+	</game>
+	<game name="WipEout 2048 (USA)">
+		<description>WipEout 2048 (USA)</description>
+		<release name="WipEout 2048 (USA)" region="USA"/>
+		<rom name="WipEout 2048 (USA).psv" size="1895825408" crc="2e8c65fe" md5="ebfa42c8873752d26b4afe7f665a1a5f" sha1="6d6bbb55e66dc982547b809439ab7aa71ec4d3da"/>
+	</game>
+	<game name="WipEout 2048 (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)">
+		<description>WipEout 2048 (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)</description>
+		<release name="WipEout 2048 (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru)" region="EUR"/>
+		<rom name="WipEout 2048 (Europe) (En,Fr,De,Es,It,Nl,Pt,Sv,No,Da,Fi,Pl,Ru).psv" size="189582540" crc="8f95925a" md5="3d840ed143311b792558db710f93a580" sha1="897f3ed370d42601d37b69a80c7fd4deccd2a249" status="verified"/>
+	</game>
+	<game name="Wolf Among Us, The (USA)">
+		<description>Wolf Among Us, The (USA)</description>
+		<release name="Wolf Among Us, The (USA)" region="USA"/>
+		<rom name="Wolf Among Us, The (USA).psv" size="3791650816" crc="38941715" md5="5af29c674cfb6304f88ecec0b199863f" sha1="06ba0199f0dc304bbd5778b5ee030be582eafbbc"/>
+	</game>
+	<game name="XBlaze - Code Embryo (USA)">
+		<description>XBlaze - Code Embryo (USA)</description>
+		<release name="XBlaze - Code Embryo (USA)" region="USA"/>
+		<rom name="XBlaze - Code Embryo (USA).psv" size="1895825408" crc="f1adafb2" md5="6230c807acc9048ba92c388545ec4326" sha1="99e90b862481a2ab040d1df6fb59d6f46dcb499d"/>
+	</game>
+	<game name="XBLAZE - Lost Memories (USA)">
+		<description>XBLAZE - Lost Memories (USA)</description>
+		<release name="XBLAZE - Lost Memories (USA)" region="USA"/>
+		<rom name="XBLAZE - Lost Memories (USA).psv" size="3791650816" crc="a6bafc34" md5="f577e857639f37941f7077911028f2a2" sha1="7fd45d9e909a5ff27188ec7731e56b64d4a4cc89"/>
+	</game>
+	<game name="Yingxiong Chuanshuo - Kong Zhi Guiji Di-Yi Zhang Quanmian Jinhuaban (China)">
+		<description>Yingxiong Chuanshuo - Kong Zhi Guiji Di-Yi Zhang Quanmian Jinhuaban (China)</description>
+		<release name="Yingxiong Chuanshuo - Kong Zhi Guiji Di-Yi Zhang Quanmian Jinhuaban (China)" region="CHN"/>
+		<rom name="Yingxiong Chuanshuo - Kong Zhi Guiji Di-Yi Zhang Quanmian Jinhuaban (China).psv" size="3791650816" crc="01de2830" md5="e017c5ed66aabf8249dc95028e2c0408" sha1="17659ef36074a96c3fd3cbd8eae9310cac8bd60b"/>
+	</game>
+	<game name="Yomawari - Midnight Shadows (USA)">
+		<description>Yomawari - Midnight Shadows (USA)</description>
+		<release name="Yomawari - Midnight Shadows (USA)" region="USA"/>
+		<rom name="Yomawari - Midnight Shadows (USA).psv" size="1895825408" crc="c739f90d" md5="baded85ab2fb6d7fe3430863b1d2b7b2" sha1="76789802c1a7dc7d1af92b6af02d8cdbb8332a10"/>
+	</game>
+	<game name="Yomawari - Night Alone + htol-NiQ - The Firefly Diary (USA)">
+		<description>Yomawari - Night Alone + htol-NiQ - The Firefly Diary (USA)</description>
+		<release name="Yomawari - Night Alone + htol-NiQ - The Firefly Diary (USA)" region="USA"/>
+		<rom name="Yomawari - Night Alone + htol-NiQ - The Firefly Diary (USA).psv" size="1895825408" crc="6a6dbb35" md5="8dc684a7a663aa443f742365c4610f89" sha1="037654d1357568aed2c74b7db2b55bce11364f3a"/>
+	</game>
+	<game name="Zero Escape - Zero Time Dilemma (USA)">
+		<description>Zero Escape - Zero Time Dilemma (USA)</description>
+		<release name="Zero Escape - Zero Time Dilemma (USA)" region="USA"/>
+		<rom name="Zero Escape - Zero Time Dilemma (USA).psv" size="1895825408" crc="687d19fe" md5="425127edc3f9d6ae4cb92c0412be6bca" sha1="e621777bba0f135938dafbaddfd3d1359f112f6e"/>
+	</game>
+</datafile>

@@ -2,13 +2,12 @@ package main
 
 import (
 	"Backend/ent"
+	"Backend/ent/rom"
 	"context"
 	"crypto/md5"
 	"encoding/xml"
-	"entgo.io/ent/dialect"
 	"errors"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
 	"io"
 	"io/fs"
 	"io/ioutil"
@@ -16,9 +15,12 @@ import (
 	"os"
 	"path/filepath"
 	"time"
+
+	"entgo.io/ent/dialect"
+	_ "github.com/mattn/go-sqlite3"
 )
 
-var noGameIdentified = errors.New("no game identified")
+var errNoGameIdentified = errors.New("no game identified")
 
 type Game struct {
 	Text        string `xml:",chardata"`
@@ -56,24 +58,46 @@ type Datafile struct {
 	Games []Game `xml:"game"`
 }
 
-func visit(datafile *map[string]*Game, library *[]string) fs.WalkDirFunc {
+func visitRoms(client *ent.Client, library *[]*ent.FileCreate, ctx context.Context) fs.WalkDirFunc {
 	return func(path string, d fs.DirEntry, err error) error {
 		if d.IsDir() {
 			return nil
 		}
-		game, err := identityGame(path, datafile)
+		game, err := identityROM(path, client, ctx)
 		if err != nil {
-			if err == noGameIdentified {
+			if err == errNoGameIdentified {
 				return nil
 			}
 			return err
 		}
-		*library = append(*library, game.Name)
+		*library = append(*library, client.File.Create().SetPath(path).SetRom(game))
 		return nil
 	}
 }
 
-func identityGame(path string, datafile *map[string]*Game) (game *Game, err error) {
+func visitDAT(client *ent.Client, ctx context.Context) fs.WalkDirFunc {
+	return func(path string, d fs.DirEntry, err error) error {
+		if d.IsDir() {
+			return nil
+		}
+		var datafile Datafile
+		data, _ := ioutil.ReadFile(path)
+
+		err = xml.Unmarshal(data, &datafile)
+		if err != nil {
+			log.Fatalf("%v", err)
+		}
+
+		err = fillTable(client, ctx, datafile)
+		if err != nil {
+			log.Fatalf("%v", err)
+		}
+
+		return nil
+	}
+}
+
+func identityROM(path string, client *ent.Client, ctx context.Context) (game *ent.Rom, err error) {
 	f, err := os.Open(path)
 	if err != nil {
 		log.Fatal(err)
@@ -90,58 +114,135 @@ func identityGame(path string, datafile *map[string]*Game) (game *Game, err erro
 
 	sprintf := fmt.Sprintf("%x", h.Sum(nil))
 
-	ok := false
-	game, ok = (*datafile)[sprintf]
-	if ok {
-		return game, nil
+	dbRom, err := client.Rom.Query().Where(rom.Md5EQ(sprintf)).Only(ctx)
+	if err != nil {
+		if ent.IsNotFound(err) {
+			return nil, errNoGameIdentified
+		}
+		if ent.IsNotSingular(err) {
+			println("duplicated rom!")
+			return nil, errNoGameIdentified
+		}
+		return nil, err
+	} else {
+		return dbRom, nil
 	}
 
-	return &Game{}, noGameIdentified
+	return nil, errNoGameIdentified
+}
+
+func fillTable(client *ent.Client, ctx context.Context, datafile Datafile) error {
+	dbDatafile, err := client.Datafile.Create().Save(ctx)
+	if err != nil {
+		return err
+	}
+
+	_, err = client.Header.Create().SetDatafile(dbDatafile).SetAuthor(datafile.Header.Author).SetName(datafile.Header.Name).SetDescription(datafile.Header.Description).SetVersion(datafile.Header.Version).SetDate(datafile.Header.Date).SetURL(datafile.Header.URL).Save(ctx)
+	if err != nil {
+		return err
+	}
+
+	bulkGames := make([]*ent.GameCreate, len(datafile.Games))
+	for i, game := range datafile.Games {
+		bulkGames[i] = client.Game.Create().SetCloneof(game.Cloneof).SetDatafile(dbDatafile).SetDescription(game.Description).SetName(game.Name)
+	}
+	games, err := client.Game.CreateBulk(bulkGames...).Save(ctx)
+	if err != nil {
+		return err
+	}
+
+	bulkReleases := make([]*ent.ReleaseCreate, 0)
+	bulkRoms := make([]*ent.RomCreate, 0)
+
+	for i, game := range datafile.Games {
+		for _, release := range game.Release {
+			bulkReleases = append(bulkReleases, client.Release.Create().SetGame(games[i]).SetName(release.Name).SetRegion(release.Region))
+		}
+		if game.Rom.Name != "" {
+			bulkRoms = append(bulkRoms, client.Rom.Create().SetGame(games[i]).SetMd5(game.Rom.Md5).SetCrc(game.Rom.Crc).SetName(game.Rom.Name).SetSize(game.Rom.Size).SetSha1(game.Rom.Sha1).SetStatus(game.Rom.Status))
+		}
+	}
+
+	var releaseChunks [][]*ent.ReleaseCreate
+	for i := 0; i < len(bulkReleases); i += 999 {
+		end := i + 999
+
+		// necessary check to avoid slicing beyond
+		// slice capacity
+		if end > len(bulkReleases) {
+			end = len(bulkReleases)
+		}
+		releaseChunks = append(releaseChunks, bulkReleases[i:end])
+	}
+
+	for _, chunk := range releaseChunks {
+		_, err = client.Release.CreateBulk(chunk...).Save(ctx)
+		if err != nil {
+			return err
+		}
+	}
+
+	var romChunks [][]*ent.RomCreate
+	for i := 0; i < len(bulkRoms); i += 999 {
+		end := i + 999
+
+		// necessary check to avoid slicing beyond
+		// slice capacity
+		if end > len(bulkRoms) {
+			end = len(bulkRoms)
+		}
+		romChunks = append(romChunks, bulkRoms[i:end])
+	}
+
+	for _, chunk := range romChunks {
+		_, err = client.Rom.CreateBulk(chunk...).Save(ctx)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func main() {
-	var GBADatafile Datafile
-	HashPointer := make(map[string]*Game, 0)
-	GameLibrary := make([]string, 0)
-
-	data, _ := ioutil.ReadFile("dat/Nintendo - Game Boy Advance (Parent-Clone) (20210506-095002).dat")
-
-	_ = xml.Unmarshal(data, &GBADatafile)
-
 	client, err := ent.Open(dialect.SQLite, "file:arcadia.db?mode=rwc&cache=shared&_fk=1")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
 	}
-	defer client.Close()
+
+	defer func(client *ent.Client) {
+		_ = client.Close()
+	}(client)
 	ctx := context.Background()
 
-	err, _ = fillTable(err, client, ctx, GBADatafile)
+	createDatabase(client, ctx, err)
 
-	for i, game := range GBADatafile.Games {
-		HashPointer[game.Rom.Md5] = &GBADatafile.Games[i]
+}
+
+func createDatabase(client *ent.Client, ctx context.Context, err error) {
+	// Run the automatic migration tool to create all schema resources.
+	if err := client.Schema.Create(ctx); err != nil {
+		log.Fatalf("failed creating schema resources: %v", err)
 	}
 
 	start := time.Now()
-	err = filepath.WalkDir("D:\\ROMs\\Nintendo Gameboy Advance", visit(&HashPointer, &GameLibrary))
+	//err = filepath.WalkDir("./rom", visitRoms(&HashPointer, &GameLibrary))
+	err = filepath.WalkDir("./dat", visitDAT(client, ctx))
+	if err != nil {
+		log.Fatalf("%v", err)
+	}
+
+	bulkFiles := make([]*ent.FileCreate, 0)
+
+	err = filepath.WalkDir("/Volumes/Kuma/ROMs/Nintendo Gameboy Advance", visitRoms(client, &bulkFiles, ctx))
 	if err != nil {
 		println(err)
 	}
 	duration := time.Since(start)
 	fmt.Println(duration)
 
-	fmt.Printf("%v", GameLibrary)
-
-}
-
-func fillTable(err error, client *ent.Client, ctx context.Context, GBADatafile Datafile) (error, bool) {
-	datafile, err := client.Datafile.Create().Save(ctx)
+	_, err = client.File.CreateBulk(bulkFiles...).Save(ctx)
 	if err != nil {
-		return nil, true
+		log.Fatalf("%v", err)
 	}
-
-	_, err = client.Header.Create().SetDatafile(datafile).SetAuthor(GBADatafile.Header.Author).Save(ctx)
-	if err != nil {
-		return nil, true
-	}
-	return err, false
 }

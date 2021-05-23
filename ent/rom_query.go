@@ -3,10 +3,12 @@
 package ent
 
 import (
+	"Backend/ent/file"
 	"Backend/ent/game"
 	"Backend/ent/predicate"
 	"Backend/ent/rom"
 	"context"
+	"database/sql/driver"
 	"errors"
 	"fmt"
 	"math"
@@ -27,6 +29,7 @@ type RomQuery struct {
 	predicates []predicate.Rom
 	// eager-loading edges.
 	withGame *GameQuery
+	withFile *FileQuery
 	withFKs  bool
 	// intermediate query (i.e. traversal path).
 	sql  *sql.Selector
@@ -79,6 +82,28 @@ func (rq *RomQuery) QueryGame() *GameQuery {
 			sqlgraph.From(rom.Table, rom.FieldID, selector),
 			sqlgraph.To(game.Table, game.FieldID),
 			sqlgraph.Edge(sqlgraph.O2O, true, rom.GameTable, rom.GameColumn),
+		)
+		fromU = sqlgraph.SetNeighbors(rq.driver.Dialect(), step)
+		return fromU, nil
+	}
+	return query
+}
+
+// QueryFile chains the current query on the "file" edge.
+func (rq *RomQuery) QueryFile() *FileQuery {
+	query := &FileQuery{config: rq.config}
+	query.path = func(ctx context.Context) (fromU *sql.Selector, err error) {
+		if err := rq.prepareQuery(ctx); err != nil {
+			return nil, err
+		}
+		selector := rq.sqlQuery(ctx)
+		if err := selector.Err(); err != nil {
+			return nil, err
+		}
+		step := sqlgraph.NewStep(
+			sqlgraph.From(rom.Table, rom.FieldID, selector),
+			sqlgraph.To(file.Table, file.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, true, rom.FileTable, rom.FileColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(rq.driver.Dialect(), step)
 		return fromU, nil
@@ -268,6 +293,7 @@ func (rq *RomQuery) Clone() *RomQuery {
 		order:      append([]OrderFunc{}, rq.order...),
 		predicates: append([]predicate.Rom{}, rq.predicates...),
 		withGame:   rq.withGame.Clone(),
+		withFile:   rq.withFile.Clone(),
 		// clone intermediate query.
 		sql:  rq.sql.Clone(),
 		path: rq.path,
@@ -282,6 +308,17 @@ func (rq *RomQuery) WithGame(opts ...func(*GameQuery)) *RomQuery {
 		opt(query)
 	}
 	rq.withGame = query
+	return rq
+}
+
+// WithFile tells the query-builder to eager-load the nodes that are connected to
+// the "file" edge. The optional arguments are used to configure the query builder of the edge.
+func (rq *RomQuery) WithFile(opts ...func(*FileQuery)) *RomQuery {
+	query := &FileQuery{config: rq.config}
+	for _, opt := range opts {
+		opt(query)
+	}
+	rq.withFile = query
 	return rq
 }
 
@@ -351,8 +388,9 @@ func (rq *RomQuery) sqlAll(ctx context.Context) ([]*Rom, error) {
 		nodes       = []*Rom{}
 		withFKs     = rq.withFKs
 		_spec       = rq.querySpec()
-		loadedTypes = [1]bool{
+		loadedTypes = [2]bool{
 			rq.withGame != nil,
+			rq.withFile != nil,
 		}
 	)
 	if rq.withGame != nil {
@@ -407,6 +445,35 @@ func (rq *RomQuery) sqlAll(ctx context.Context) ([]*Rom, error) {
 			for i := range nodes {
 				nodes[i].Edges.Game = n
 			}
+		}
+	}
+
+	if query := rq.withFile; query != nil {
+		fks := make([]driver.Value, 0, len(nodes))
+		nodeids := make(map[int]*Rom)
+		for i := range nodes {
+			fks = append(fks, nodes[i].ID)
+			nodeids[nodes[i].ID] = nodes[i]
+			nodes[i].Edges.File = []*File{}
+		}
+		query.withFKs = true
+		query.Where(predicate.File(func(s *sql.Selector) {
+			s.Where(sql.InValues(rom.FileColumn, fks...))
+		}))
+		neighbors, err := query.All(ctx)
+		if err != nil {
+			return nil, err
+		}
+		for _, n := range neighbors {
+			fk := n.file_rom
+			if fk == nil {
+				return nil, fmt.Errorf(`foreign-key "file_rom" is nil for node %v`, n.ID)
+			}
+			node, ok := nodeids[*fk]
+			if !ok {
+				return nil, fmt.Errorf(`unexpected foreign-key "file_rom" returned %v for node %v`, *fk, n.ID)
+			}
+			node.Edges.File = append(node.Edges.File, n)
 		}
 	}
 

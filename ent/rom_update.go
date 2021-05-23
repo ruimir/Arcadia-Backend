@@ -3,6 +3,7 @@
 package ent
 
 import (
+	"Backend/ent/file"
 	"Backend/ent/game"
 	"Backend/ent/predicate"
 	"Backend/ent/rom"
@@ -75,6 +76,21 @@ func (ru *RomUpdate) SetGame(g *Game) *RomUpdate {
 	return ru.SetGameID(g.ID)
 }
 
+// AddFileIDs adds the "file" edge to the File entity by IDs.
+func (ru *RomUpdate) AddFileIDs(ids ...int) *RomUpdate {
+	ru.mutation.AddFileIDs(ids...)
+	return ru
+}
+
+// AddFile adds the "file" edges to the File entity.
+func (ru *RomUpdate) AddFile(f ...*File) *RomUpdate {
+	ids := make([]int, len(f))
+	for i := range f {
+		ids[i] = f[i].ID
+	}
+	return ru.AddFileIDs(ids...)
+}
+
 // Mutation returns the RomMutation object of the builder.
 func (ru *RomUpdate) Mutation() *RomMutation {
 	return ru.mutation
@@ -84,6 +100,27 @@ func (ru *RomUpdate) Mutation() *RomMutation {
 func (ru *RomUpdate) ClearGame() *RomUpdate {
 	ru.mutation.ClearGame()
 	return ru
+}
+
+// ClearFile clears all "file" edges to the File entity.
+func (ru *RomUpdate) ClearFile() *RomUpdate {
+	ru.mutation.ClearFile()
+	return ru
+}
+
+// RemoveFileIDs removes the "file" edge to File entities by IDs.
+func (ru *RomUpdate) RemoveFileIDs(ids ...int) *RomUpdate {
+	ru.mutation.RemoveFileIDs(ids...)
+	return ru
+}
+
+// RemoveFile removes "file" edges to File entities.
+func (ru *RomUpdate) RemoveFile(f ...*File) *RomUpdate {
+	ids := make([]int, len(f))
+	for i := range f {
+		ids[i] = f[i].ID
+	}
+	return ru.RemoveFileIDs(ids...)
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
@@ -246,6 +283,60 @@ func (ru *RomUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 		_spec.Edges.Add = append(_spec.Edges.Add, edge)
 	}
+	if ru.mutation.FileCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := ru.mutation.RemovedFileIDs(); len(nodes) > 0 && !ru.mutation.FileCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := ru.mutation.FileIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
 	if n, err = sqlgraph.UpdateNodes(ctx, ru.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
 			err = &NotFoundError{rom.Label}
@@ -312,6 +403,21 @@ func (ruo *RomUpdateOne) SetGame(g *Game) *RomUpdateOne {
 	return ruo.SetGameID(g.ID)
 }
 
+// AddFileIDs adds the "file" edge to the File entity by IDs.
+func (ruo *RomUpdateOne) AddFileIDs(ids ...int) *RomUpdateOne {
+	ruo.mutation.AddFileIDs(ids...)
+	return ruo
+}
+
+// AddFile adds the "file" edges to the File entity.
+func (ruo *RomUpdateOne) AddFile(f ...*File) *RomUpdateOne {
+	ids := make([]int, len(f))
+	for i := range f {
+		ids[i] = f[i].ID
+	}
+	return ruo.AddFileIDs(ids...)
+}
+
 // Mutation returns the RomMutation object of the builder.
 func (ruo *RomUpdateOne) Mutation() *RomMutation {
 	return ruo.mutation
@@ -321,6 +427,27 @@ func (ruo *RomUpdateOne) Mutation() *RomMutation {
 func (ruo *RomUpdateOne) ClearGame() *RomUpdateOne {
 	ruo.mutation.ClearGame()
 	return ruo
+}
+
+// ClearFile clears all "file" edges to the File entity.
+func (ruo *RomUpdateOne) ClearFile() *RomUpdateOne {
+	ruo.mutation.ClearFile()
+	return ruo
+}
+
+// RemoveFileIDs removes the "file" edge to File entities by IDs.
+func (ruo *RomUpdateOne) RemoveFileIDs(ids ...int) *RomUpdateOne {
+	ruo.mutation.RemoveFileIDs(ids...)
+	return ruo
+}
+
+// RemoveFile removes "file" edges to File entities.
+func (ruo *RomUpdateOne) RemoveFile(f ...*File) *RomUpdateOne {
+	ids := make([]int, len(f))
+	for i := range f {
+		ids[i] = f[i].ID
+	}
+	return ruo.RemoveFileIDs(ids...)
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
@@ -499,6 +626,60 @@ func (ruo *RomUpdateOne) sqlSave(ctx context.Context) (_node *Rom, err error) {
 				IDSpec: &sqlgraph.FieldSpec{
 					Type:   field.TypeInt,
 					Column: game.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Add = append(_spec.Edges.Add, edge)
+	}
+	if ruo.mutation.FileCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
+				},
+			},
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := ruo.mutation.RemovedFileIDs(); len(nodes) > 0 && !ruo.mutation.FileCleared() {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
+		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
+	}
+	if nodes := ruo.mutation.FileIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
 				},
 			},
 		}

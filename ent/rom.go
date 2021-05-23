@@ -38,9 +38,11 @@ type Rom struct {
 type RomEdges struct {
 	// Game holds the value of the game edge.
 	Game *Game `json:"game,omitempty"`
+	// File holds the value of the file edge.
+	File []*File `json:"file,omitempty"`
 	// loadedTypes holds the information for reporting if a
 	// type was loaded (or requested) in eager-loading or not.
-	loadedTypes [1]bool
+	loadedTypes [2]bool
 }
 
 // GameOrErr returns the Game value or an error if the edge
@@ -55,6 +57,15 @@ func (e RomEdges) GameOrErr() (*Game, error) {
 		return e.Game, nil
 	}
 	return nil, &NotLoadedError{edge: "game"}
+}
+
+// FileOrErr returns the File value or an error if the edge
+// was not loaded in eager-loading.
+func (e RomEdges) FileOrErr() ([]*File, error) {
+	if e.loadedTypes[1] {
+		return e.File, nil
+	}
+	return nil, &NotLoadedError{edge: "file"}
 }
 
 // scanValues returns the types for scanning values from sql.Rows.
@@ -140,6 +151,11 @@ func (r *Rom) assignValues(columns []string, values []interface{}) error {
 // QueryGame queries the "game" edge of the Rom entity.
 func (r *Rom) QueryGame() *GameQuery {
 	return (&RomClient{config: r.config}).QueryGame(r)
+}
+
+// QueryFile queries the "file" edge of the Rom entity.
+func (r *Rom) QueryFile() *FileQuery {
+	return (&RomClient{config: r.config}).QueryFile(r)
 }
 
 // Update returns a builder for updating this Rom.

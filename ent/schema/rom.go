@@ -27,5 +27,6 @@ func (Rom) Fields() []ent.Field {
 func (Rom) Edges() []ent.Edge {
 	return []ent.Edge{
 		edge.From("game", Game.Type).Ref("rom").Unique().Required(),
+		edge.From("file", File.Type).Ref("rom"),
 	}
 }

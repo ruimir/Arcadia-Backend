@@ -4,6 +4,7 @@ package ent
 
 import (
 	"Backend/ent/datafile"
+	"Backend/ent/file"
 	"Backend/ent/game"
 	"Backend/ent/header"
 	"Backend/ent/release"
@@ -36,6 +37,7 @@ type OrderFunc func(*sql.Selector)
 func columnChecker(table string) func(string) error {
 	checks := map[string]func(string) bool{
 		datafile.Table: datafile.ValidColumn,
+		file.Table:     file.ValidColumn,
 		game.Table:     game.ValidColumn,
 		header.Table:   header.ValidColumn,
 		release.Table:  release.ValidColumn,

@@ -3,6 +3,7 @@
 package ent
 
 import (
+	"Backend/ent/file"
 	"Backend/ent/game"
 	"Backend/ent/rom"
 	"context"
@@ -65,6 +66,21 @@ func (rc *RomCreate) SetGameID(id int) *RomCreate {
 // SetGame sets the "game" edge to the Game entity.
 func (rc *RomCreate) SetGame(g *Game) *RomCreate {
 	return rc.SetGameID(g.ID)
+}
+
+// AddFileIDs adds the "file" edge to the File entity by IDs.
+func (rc *RomCreate) AddFileIDs(ids ...int) *RomCreate {
+	rc.mutation.AddFileIDs(ids...)
+	return rc
+}
+
+// AddFile adds the "file" edges to the File entity.
+func (rc *RomCreate) AddFile(f ...*File) *RomCreate {
+	ids := make([]int, len(f))
+	for i := range f {
+		ids[i] = f[i].ID
+	}
+	return rc.AddFileIDs(ids...)
 }
 
 // Mutation returns the RomMutation object of the builder.
@@ -232,6 +248,25 @@ func (rc *RomCreate) createSpec() (*Rom, *sqlgraph.CreateSpec) {
 			edge.Target.Nodes = append(edge.Target.Nodes, k)
 		}
 		_node.game_rom = &nodes[0]
+		_spec.Edges = append(_spec.Edges, edge)
+	}
+	if nodes := rc.mutation.FileIDs(); len(nodes) > 0 {
+		edge := &sqlgraph.EdgeSpec{
+			Rel:     sqlgraph.O2M,
+			Inverse: true,
+			Table:   rom.FileTable,
+			Columns: []string{rom.FileColumn},
+			Bidi:    false,
+			Target: &sqlgraph.EdgeTarget{
+				IDSpec: &sqlgraph.FieldSpec{
+					Type:   field.TypeInt,
+					Column: file.FieldID,
+				},
+			},
+		}
+		for _, k := range nodes {
+			edge.Target.Nodes = append(edge.Target.Nodes, k)
+		}
 		_spec.Edges = append(_spec.Edges, edge)
 	}
 	return _node, _spec

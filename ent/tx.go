@@ -14,6 +14,8 @@ type Tx struct {
 	config
 	// Datafile is the client for interacting with the Datafile builders.
 	Datafile *DatafileClient
+	// File is the client for interacting with the File builders.
+	File *FileClient
 	// Game is the client for interacting with the Game builders.
 	Game *GameClient
 	// Header is the client for interacting with the Header builders.
@@ -158,6 +160,7 @@ func (tx *Tx) Client() *Client {
 
 func (tx *Tx) init() {
 	tx.Datafile = NewDatafileClient(tx.config)
+	tx.File = NewFileClient(tx.config)
 	tx.Game = NewGameClient(tx.config)
 	tx.Header = NewHeaderClient(tx.config)
 	tx.Release = NewReleaseClient(tx.config)

@@ -828,6 +828,34 @@ func HasGameWith(preds ...predicate.Game) predicate.Rom {
 	})
 }
 
+// HasFile applies the HasEdge predicate on the "file" edge.
+func HasFile() predicate.Rom {
+	return predicate.Rom(func(s *sql.Selector) {
+		step := sqlgraph.NewStep(
+			sqlgraph.From(Table, FieldID),
+			sqlgraph.To(FileTable, FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, true, FileTable, FileColumn),
+		)
+		sqlgraph.HasNeighbors(s, step)
+	})
+}
+
+// HasFileWith applies the HasEdge predicate on the "file" edge with a given conditions (other predicates).
+func HasFileWith(preds ...predicate.File) predicate.Rom {
+	return predicate.Rom(func(s *sql.Selector) {
+		step := sqlgraph.NewStep(
+			sqlgraph.From(Table, FieldID),
+			sqlgraph.To(FileInverseTable, FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, true, FileTable, FileColumn),
+		)
+		sqlgraph.HasNeighborsWith(s, step, func(s *sql.Selector) {
+			for _, p := range preds {
+				p(s)
+			}
+		})
+	})
+}
+
 // And groups predicates with the AND operator between them.
 func And(predicates ...predicate.Rom) predicate.Rom {
 	return predicate.Rom(func(s *sql.Selector) {

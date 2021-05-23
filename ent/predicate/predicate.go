@@ -9,6 +9,9 @@ import (
 // Datafile is the predicate function for datafile builders.
 type Datafile func(*sql.Selector)
 
+// File is the predicate function for file builders.
+type File func(*sql.Selector)
+
 // Game is the predicate function for game builders.
 type Game func(*sql.Selector)
 

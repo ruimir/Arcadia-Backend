@@ -19,6 +19,26 @@ var (
 		PrimaryKey:  []*schema.Column{DatafilesColumns[0]},
 		ForeignKeys: []*schema.ForeignKey{},
 	}
+	// FilesColumns holds the columns for the "files" table.
+	FilesColumns = []*schema.Column{
+		{Name: "id", Type: field.TypeInt, Increment: true},
+		{Name: "path", Type: field.TypeString},
+		{Name: "file_rom", Type: field.TypeInt, Nullable: true},
+	}
+	// FilesTable holds the schema information for the "files" table.
+	FilesTable = &schema.Table{
+		Name:       "files",
+		Columns:    FilesColumns,
+		PrimaryKey: []*schema.Column{FilesColumns[0]},
+		ForeignKeys: []*schema.ForeignKey{
+			{
+				Symbol:     "files_roms_rom",
+				Columns:    []*schema.Column{FilesColumns[2]},
+				RefColumns: []*schema.Column{RomsColumns[0]},
+				OnDelete:   schema.SetNull,
+			},
+		},
+	}
 	// GamesColumns holds the columns for the "games" table.
 	GamesColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt, Increment: true},
@@ -115,6 +135,7 @@ var (
 	// Tables holds all the tables in the schema.
 	Tables = []*schema.Table{
 		DatafilesTable,
+		FilesTable,
 		GamesTable,
 		HeadersTable,
 		ReleasesTable,
@@ -123,6 +144,7 @@ var (
 )
 
 func init() {
+	FilesTable.ForeignKeys[0].RefTable = RomsTable
 	GamesTable.ForeignKeys[0].RefTable = DatafilesTable
 	HeadersTable.ForeignKeys[0].RefTable = DatafilesTable
 	ReleasesTable.ForeignKeys[0].RefTable = GamesTable
