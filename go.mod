@@ -18,6 +18,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.11.1 // indirect
 	github.com/jonboulle/clockwork v0.1.0 // indirect
+	github.com/labstack/echo/v4 v4.7.2 // indirect
 	github.com/mattn/go-sqlite3 v1.14.12
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/prometheus/tsdb v0.7.1 // indirect
