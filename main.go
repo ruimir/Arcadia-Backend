@@ -12,11 +12,13 @@ import (
 	"io/fs"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"time"
 
 	"entgo.io/ent/dialect"
+	"github.com/labstack/echo"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -204,7 +206,7 @@ func fillTable(client *ent.Client, ctx context.Context, datafile Datafile) error
 	return nil
 }
 
-func main() {
+func initDatabase() {
 	client, err := ent.Open(dialect.SQLite, "file:arcadia.db?mode=rwc&cache=shared&_fk=1")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
@@ -245,4 +247,12 @@ func createDatabase(client *ent.Client, ctx context.Context, err error) {
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
+}
+
+func main() {
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
+	e.Logger.Fatal(e.Start(":1323"))
 }
